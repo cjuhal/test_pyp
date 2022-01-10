@@ -1,0 +1,86 @@
+<!-- va en header.php -->
+$page_full_screen_rows = (isset($post->ID)) ? get_post_meta($post->ID, '_nectar_full_screen_rows', true) : '';
+?>
+	<header style="max-width: 1245px;margin: 0 auto;margin-bottom: 5px; padding: 25px 0px;">
+
+		<div class="container">
+            <nav class="navbar navbar-expand navbar-light" style="float: right; margin-top:-30px;">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#flacsomenu" aria-controls="flacsomenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon" id="flacsomenu"></span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link" href="http://flacso.org.ar/institucional/" target="_blank"><span> FLACSO</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://flacso.org.ar/consultas/" target="_blank"><span>Consultas</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://flacso.org.ar/biblioteca/" target="_blank"><span>Biblioteca</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://flacso.org.ar/flacso-virtual/" target="_blank"><span>FLACSO Virtual</span></a></li>
+                    </ul>
+                </div>
+            </nav>
+			<div class="row">
+
+				<div class="col-sm-auto">
+
+					<a id="logo" href="<?php echo home_url(); ?>" <?php echo $logo_class; ?>>
+
+						<?php nectar_logo_output($activate_transparency, $sideWidgetClass); ?>
+
+					</a>
+
+				</div>
+                <div class="col-sm-auto">
+                </div>
+
+
+				<?php if($headerFormat == 'menu-left-aligned') { ?>
+					<div class="right-aligned-menu-items">
+						<nav>
+							<ul class="buttons" data-user-set-ocm="<?php echo $userSetSideWidgetArea; ?>">
+
+								<?php
+								if($using_pr_menu == 'true') {
+									wp_nav_menu( array('walker' => new Nectar_Arrow_Walker_Nav_Menu, 'theme_location' => 'top_nav_pull_right', 'container' => '', 'items_wrap' => '%3$s' ) );
+								} ?>
+
+								<?php if($headerSearch != 'false') { ?>
+									<li id="search-btn"><div><a href="#searchbox"><span class="icon-salient-search" aria-hidden="true"></span></a></div> </li>
+								<?php } ?>
+
+								<?php if (!empty($options['enable-cart']) && $options['enable-cart'] == '1' && $theme_skin == 'material') {
+										if ($woocommerce) {
+											echo '<li class="nectar-woo-cart">' . nectar_header_cart_output() .'</li>';
+									 	}
+								   } ?>
+
+								<?php if($sideWidgetArea == '1') { ?>
+									<li class="slide-out-widget-area-toggle" data-icon-animation="<?php echo $sideWidgetIconAnimation; ?>">
+										<div> <a href="#sidewidgetarea" class="closed"> <span> <i class="lines-button x2"> <i class="lines"></i> </i> </span> </a> </div>
+	       							</li>
+								<?php } ?>
+							</ul>
+
+							<?php
+								if(!empty($options['enable_social_in_header']) && $options['enable_social_in_header'] == '1' && $using_secondary != 'header_with_secondary') {
+									echo '<ul><li id="social-in-menu" class="button_social_group">';
+									nectar_header_social_icons('main-nav');
+									echo '</li></ul>';
+								}
+							?>
+						</nav>
+					</div><!--/right-aligned-menu-items-->
+
+				<?php } else if($headerFormat == 'left-header') {
+
+					if(!empty($options['enable_social_in_header']) && $options['enable_social_in_header'] == '1' && $using_secondary != 'header_with_secondary') {
+						echo '<div class="button_social_group"><ul><li id="social-in-menu">';
+						nectar_header_social_icons('main-nav');
+						echo '</li></ul></div>';
+					}
+
+				} ?>
+
+			</div><!--/row-->
+
+		</div><!--/container-->
+
+	</header>

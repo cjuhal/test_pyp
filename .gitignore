@@ -1,0 +1,13 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+wp-includes
+wp-admin
+wp-content/ai1wm-backups
+wp-content/cache
+wp-content/lenguages
+wp-content/mu-plugins
+wp-content/plugins
+wp-content/updraft
+wp-content/upgrade
+wp-content/uploads
+wp-content/wflogs
