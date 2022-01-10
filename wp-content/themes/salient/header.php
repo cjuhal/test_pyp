@@ -1,6 +1,5 @@
 <!doctype html>
 
-
 <html <?php language_attributes(); ?> class="no-js">
 <head>
 
@@ -268,8 +267,29 @@ if($perm_trans != 1 || $perm_trans == 1 && $bg_header == 'false' || $page_full_s
 		}
 	}
 ?>
+<!-- MENU -->
+<?php 
+	echo "<nav class='navbar navbar-expand-lg navbar-dark bg-teal config_menu'>
+	<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarsExample08' aria-controls='navbarsExample08' aria-expanded='false' aria-label='Toggle navigation'>
+		<span class='navbar-toggler-icon'></span>
+	</button>
 
-<?php if(!empty($options['theme-skin']) && $options['theme-skin'] == 'ascend' || $headerFormat == 'left-header' ) { if($headerSearch != 'false') get_template_part('includes/header-search'); } ?>
+	<div class='collapse navbar-collapse justify-content-md-center' id='navbarsExample08'>";
+		if($theme_skin != 'material') {
+			echo "<ul class='navbar-nav'>";
+				if($has_main_menu == 'true') {
+					wp_nav_menu( array('walker' => new Nectar_Arrow_Walker_Nav_Menu, 'theme_location' => 'top_nav', 'container' => '', 'items_wrap' => '%3$s' ) );
+				} else {
+					echo '<li class="no-menu-assigned"><a href="#">No menu assigned</a></li>';
+				}
+				echo "</ul>";
+			} //non material skin
+	echo "</div></nav>";
+?>
+<!-- FIN MENU -->
+<?php  get_template_part('includes/header-search');
+ 		if(!empty($options['theme-skin']) && $options['theme-skin'] == 'ascend' || $headerFormat == 'left-header' ) { if($headerSearch != 'false') get_template_part('includes/header-search'); }
+?>
 
 <?php if($mobile_fixed != '1') { ?>
 
@@ -302,6 +322,8 @@ if($perm_trans != 1 || $perm_trans == 1 && $bg_header == 'false' || $page_full_s
 	</div>
 
 <?php } ?>
+
+
 
 <div id="ajax-loading-screen" data-disable-fade-on-click="<?php echo (!empty($options['disable-transition-fade-on-click'])) ? $options['disable-transition-fade-on-click'] : '0' ; ?>" data-effect="<?php echo $page_transition_effect; ?>" data-method="<?php echo (!empty($options['transition-method'])) ? $options['transition-method'] : 'ajax' ; ?>">
 
@@ -349,3 +371,4 @@ if($perm_trans != 1 || $perm_trans == 1 && $bg_header == 'false' || $page_full_s
 	if($sideWidgetArea == '1' && $sideWidgetClass == 'fullscreen') echo '<div class="blurred-wrap">';
 
 ?>
+

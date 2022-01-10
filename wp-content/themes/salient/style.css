@@ -111,6 +111,8 @@ FINAL DE VISUAL COMPOSER
 }
 }
 
+
+
 /* reflexiones*/
 .autor-reflexiones{
 float: right;
@@ -179,20 +181,24 @@ float: right;
 .main a{
 	color: #061235;
     font-weight: bold !important;
+    transition-duration: 1s;
 }
 .main  a:hover{
     color:#73C69C !important;
     font-weight: bold !important;
     text-decoration: none;
+    transition-duration: 1s;
 }
 .main-content a{
 	color: #00947f !important;
     font-weight: bold !important;
+    transition-duration: 1s;
 }
 .main-content a:hover{
     color:#061235 !important;
     font-weight: bold !important;
     text-decoration: none;
+    transition-duration: 1s;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -263,6 +269,7 @@ li.menu-item.menu-item-type-post_type.menu-item-object-post.nav-item.nav-link.me
     color:#73C69C !important;
     font-weight: bold !important;
     text-decoration: none;
+    text-transform: uppercase;
 }
 
 .config_menu li.menu-item.menu-item-type-post_type.menu-item-object-page.nav-item.nav-link.menu-item-has-children:hover > *,
@@ -272,6 +279,7 @@ li.menu-item.menu-item-type-post_type.menu-item-object-post.nav-item.nav-link.me
     color:#FFF !important;
     font-weight: bold !important;
     text-decoration: none;
+    text-transform: uppercase;
 }
 
 .config_menu > div > ul > li.menu-item.menu-item-type-post_type.menu-item-object-page.nav-item.nav-link.menu-item-has-children:hover > *,
@@ -281,6 +289,7 @@ li.menu-item.menu-item-type-post_type.menu-item-object-post.nav-item.nav-link.me
     color:#FFF !important;
     font-weight: bold !important;
     text-decoration: none;
+    text-transform: uppercase;
 }
 
 .config_menu > div > ul > li.menu-item.menu-item-type-post_type.menu-item-object-page.nav-item.nav-link,
@@ -294,6 +303,7 @@ li.menu-item.menu-item-type-post_type.menu-item-object-post.nav-item.nav-link.me
     padding: .70rem;
     border-left:  2px solid white;
     position: relative;
+    text-transform: uppercase;
 }
 
 .config_menu > div > ul > li.menu-item.menu-item-type-post_type.menu-item-object-page.nav-item.nav-link:last-child,
@@ -308,6 +318,7 @@ li.menu-item.menu-item-type-post_type.menu-item-object-post.nav-item.nav-link.me
     border-left:  2px solid white;
     border-right:  2px solid white;
     position: relative;
+    text-transform: uppercase;
 }
 
 /*
@@ -400,6 +411,93 @@ li.menu-item.menu-item-type-post_type.menu-item-object-post.nav-item.nav-link.me
     padding: 0.70rem 0.25rem;
 }
 }
+
+/* breadcrumb */
+.pypse_breadcrumb{
+  width: 100%;
+  font-weight: bold !important;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 20px;
+  color:#FFF !important;
+  margin: 20px 0px
+}
+
+
+.pypse_breadcrumb * {
+  color:#FFF !important;
+}
+
+.pypse_breadcrumb a {
+  color:#FFF !important;
+}
+
+.pypse_breadcrumb a:hover {
+  color:#00947F !important;
+}
+
+/* search */
+div.asl_w .probox .promagnifier .innericon svg {
+  fill: #F2F2EC;
+}
+
+div.asl_w .probox .promagnifier .innericon svg {
+  fill: #F2F2EC;
+}
+
+.proinput > form {
+  border-bottom: 1px solid #F2F2EC;
+}
+
+#ajaxsearchlite1 .probox, div.asl_w .probox {
+  margin: 0;
+  height: 28px;
+  background-color: transparent;
+  border: none;
+  border-radius: none;
+  box-shadow: none;
+}
+
+div.asl_m .probox {
+  width: auto;
+  border-radius: 5px;
+  background: transparent;
+  overflow: hidden;
+  border: 1px solid #fff;
+  box-shadow: 1px 0 3px #ccc inset;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+div.asl_w {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  background-color: transparent;
+  overflow: hidden;
+  border: 0 solid #b5b5b5;
+  border-radius: 0 0 0 0;
+  box-shadow: 0 1px 0 0 #e4e4e4;
+}
+
+div.asl_m .probox .proclose svg {
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  left: 50%;
+  margin-left: -10px;
+  fill: #F2F2EC;
+  padding: 4px;
+  box-sizing: border-box;
+  box-shadow: none;
+}
+
+.proinput label {display:none}
 
 /*colores shortcodes recuadros*/
 .footer-border-top{

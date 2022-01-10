@@ -189,26 +189,9 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
 <?php if($headerFormat == 'left-header') echo '<div class="nav-outer">'; ?>
 <?php
 echo do_shortcode('[smartslider3 slider=2]');
+do_action('get_breadcrumbs_vlkx');
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-teal config_menu">
-
-    <div class="collapse show navbar-collapse justify-content-md-center" id="navbarsExample08" >
-
-        <?php if($theme_skin != 'material') { ?>
-            <ul class="navbar-nav">
-                <?php
-                if($has_main_menu == 'true') {
-                    wp_nav_menu( array('walker' => new Nectar_Arrow_Walker_Nav_Menu, 'theme_location' => 'top_nav', 'container' => '', 'items_wrap' => '%3$s' ) );
-                } else {
-                    echo '<li class="no-menu-assigned"><a href="#">No menu assigned</a></li>';
-                }
-                ?>
-            </ul>
-        <?php } //non material skin ?>
-
-    </div>
-</nav>
 
 <?php if($headerFormat == 'left-header') echo '</div>'; ?>
 	<div class="container sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>

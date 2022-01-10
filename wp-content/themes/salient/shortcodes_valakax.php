@@ -571,9 +571,9 @@ function get_search_form_valakax() {
 	 *
 	 * @param string $form The search form HTML output.
 	 */
-	$result = apply_filters( 'get_search_form', $form );
+	$result = null;
 
-	if ( null === $result ) {
+	if ( $result === null ) {
 		$result = $form;
 	}
 
@@ -587,6 +587,12 @@ function get_empty_search_result_valakax() {
 				</div>';
 	echo $emptyResult;
 }
+ /* buscador general insertado en top menu */
+function general_search_menu_vlkx( $items, $args ) {
+    return $items.'<li class="menu-item menu-item-object-category menu-item-type-taxonomy nav-item nav-link" style="background: transparent !important; height:50px">'.do_shortcode('[wpdreams_ajaxsearchlite]').'</li>';
+	//'<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-link" style="background: transparent !important;padding: 0px;">'.do_shortcode('[ivory-search id="4070" title="Default Search Form"]').'</li>';
+  }
+  add_filter('wp_nav_menu_items','general_search_menu_vlkx', 10, 2);
 
 function apply_desing_categories_post($desingPath, $the_query){
 				if ( $the_query->have_posts() ) {
@@ -684,3 +690,28 @@ function get_category_slug(){
 	$term = get_queried_object();
     return $term->slug;
 }
+
+
+/* breadcrumbs */
+
+function crear_breadcrumbs() {
+    if (!is_front_page()) {
+		echo '<div class="pypse_breadcrumb bg-teal">';
+        echo '<a href="/">Inicio</a> › ';
+        if (is_category() || is_single() || is_page()) {
+            if(is_category()){
+                $category = get_the_category();
+                echo $category[0]->cat_name;
+            }else{
+                the_category(' - ');
+            }if(is_page()) {
+                echo the_title();
+            }if (is_single()) {
+                echo " › ";
+                the_title();
+            }
+        }
+		echo '</div>';
+    }
+}
+add_action( 'get_breadcrumbs_vlkx', 'crear_breadcrumbs' );
