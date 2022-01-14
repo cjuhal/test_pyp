@@ -589,7 +589,7 @@ function get_empty_search_result_valakax() {
 }
  /* buscador general insertado en top menu */
 function general_search_menu_vlkx( $items, $args ) {
-    return $items.'<li class="menu-item menu-item-object-category menu-item-type-taxonomy nav-item nav-link" style="background: transparent !important; height:50px">'.do_shortcode('[wpdreams_ajaxsearchlite]').'</li>';
+    return $items.'<li class="menu-item menu-item-object-category menu-item-type-taxonomy nav-item nav-link" style="background: transparent !important; padding:0px">'.do_shortcode('[wpdreams_ajaxsearchlite]').'</li>';
 	//'<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-link" style="background: transparent !important;padding: 0px;">'.do_shortcode('[ivory-search id="4070" title="Default Search Form"]').'</li>';
   }
   add_filter('wp_nav_menu_items','general_search_menu_vlkx', 10, 2);
