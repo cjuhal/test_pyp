@@ -45,7 +45,7 @@ $footerColumns = (!empty($options['footer_columns'])) ? $options['footer_columns
 
 	?>
 
-	<div id="footer-widgets" data-cols="<?php echo $footerColumns; ?>">
+	<div id="footer-widgets" class="bg-white" data-cols="<?php echo $footerColumns; ?>">
 
 		<div class="text-center text-md-left footer-border-top">
 
@@ -157,7 +157,7 @@ $footerColumns = (!empty($options['footer_columns'])) ? $options['footer_columns
 
 
 
-			<div class="mt-3 text-center text-md-left" style="height:35px;">
+			<div class="bg-white text-center text-md-left" style="height:35px;">
 
 				<div class="row" id="copyright">
 					<div class="col-lg-4 col-sm-4" style="padding-left: 15px;">

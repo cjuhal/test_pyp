@@ -4,7 +4,18 @@ body {
   margin: 0px !important;
   padding: 0px !important;
 }
-
+.main-content{
+  max-width: 100% !important;
+}
+.bg-white{
+  background-color:#fff
+}
+.bg-content {
+  background-color:#f1f2ec !important;
+}
+html .container-wrap, .material .ocm-effect-wrap, .project-title, html .ascend .container-wrap, html .ascend .project-title, html body .vc_text_separator div, html .carousel-wrap[data-full-width="true"] .carousel-heading, html .carousel-wrap span.left-border, html .carousel-wrap span.right-border, .single-post.ascend #page-header-bg.fullscreen-header, .single-post #single-below-header.fullscreen-header, html #page-header-wrap, html .page-header-no-bg, html #full_width_portfolio .project-title.parallax-effect, html .portfolio-items .col, html .page-template-template-portfolio-php .portfolio-items .col.span_3, html .page-template-template-portfolio-php .portfolio-items .col.span_4 {
+  background-color: #f1f2ec !important;
+}
 .elementor-widget-container{
   justify-content: flex-start !important;
 }
@@ -909,6 +920,7 @@ li.menu-item.menu-item-type-post_type.menu-item-object-post.nav-item.nav-link.me
 	.container .main-content{
 		    padding: 0px 30px;
 	}
+
     .main .header_{
         max-width: 1245px;
         margin: 0 auto;

@@ -180,7 +180,7 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
 </div>
 <!-- FIN SPINNER -->
 
-<div id="ajax-content-wrap">
+<div id="ajax-content-wrap" class="bg-content">
 
 <?php
 	if($sideWidgetArea == '1' && $sideWidgetClass == 'fullscreen') echo '<div class="blurred-wrap">';
