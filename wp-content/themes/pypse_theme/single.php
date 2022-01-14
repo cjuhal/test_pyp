@@ -1,5 +1,4 @@
 <?php get_header(); ?>
-<?php do_action('get_breadcrumbs_vlkx'); ?>
 <?php 
 
 global $nectar_theme_skin, $options;
@@ -65,6 +64,7 @@ endwhile; endif;
 
 
 <div class="container-wrap <?php echo ($fullscreen_header == true) ? 'fullscreen-blog-header': null; ?> <?php if($blog_type == 'std-blog-fullwidth' || $hide_sidebar == '1') echo 'no-sidebar'; ?>">
+<?php do_action('get_breadcrumbs_vlkx'); ?>
 
 		<div class="container sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
 

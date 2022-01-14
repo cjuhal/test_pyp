@@ -696,7 +696,7 @@ function get_category_slug(){
 
 function crear_breadcrumbs() {
     if (!is_front_page()) {
-		echo '<div class="pypse_breadcrumb bg-teal">';
+		echo '<div class="pypse_breadcrumb bg-teal "><div class="margin_pypse">';
         echo '<a href="/">Inicio</a> › ';
         if (is_category() || is_single() || is_page()) {
             if(is_category()){
@@ -711,7 +711,7 @@ function crear_breadcrumbs() {
                 the_title();
             }
         }
-		echo '</div>';
+		echo '</div></div>';
     }
 }
 add_action( 'get_breadcrumbs_vlkx', 'crear_breadcrumbs' );

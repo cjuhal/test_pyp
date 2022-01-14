@@ -1,12 +1,12 @@
 <?php get_header(); 
-do_action('get_breadcrumbs_vlkx');
+
 global $options;
 $theme_skin = ( !empty($options['theme-skin']) ) ? $options['theme-skin'] : 'original';
 
 ?>
 
 <div class="container-wrap">
-	
+	<?php do_action('get_breadcrumbs_vlkx');?>
 	<div class="container main-content">
 		
 		<div class="row">

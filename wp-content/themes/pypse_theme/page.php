@@ -14,10 +14,11 @@ $animate_in_effect = (!empty($options['header-animate-in-effect'])) ? $options['
 if($headerColorScheme == 'dark') { $userSetBG = '#1f1f1f'; }
 $userSetSideWidgetArea = $sideWidgetArea;
 if($has_main_menu == 'true' && $mobile_fixed == '1' || $has_main_menu == 'true' && $theme_skin == 'material') $sideWidgetArea = '1';
-do_action('get_breadcrumbs_vlkx');
 ?>
 
 <div class="container-wrap" style="min-height: 300px;">
+
+<?php do_action('get_breadcrumbs_vlkx');?>
 
 	<div class="container sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
 	

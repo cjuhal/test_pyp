@@ -189,11 +189,12 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
 <?php if($headerFormat == 'left-header') echo '<div class="nav-outer">'; ?>
 <?php
 echo do_shortcode('[smartslider3 slider=2]');
-do_action('get_breadcrumbs_vlkx');
+
 ?>
 
 
 <?php if($headerFormat == 'left-header') echo '</div>'; ?>
+<?php do_action('get_breadcrumbs_vlkx');?>
 	<div class="container sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
 <div class="container main-content">
 

@@ -20,6 +20,14 @@ header{
   padding: 0px;
 }
 
+div .n2-section-smartslider{
+  margin-bottom: 20px;
+}
+
+.margin_pypse{ 
+  margin: 0px 3rem;
+}
+
 
 /* css footer elementor*/
 .elementor-370 .elementor-element.elementor-element-2f8bae9.elementor-column .elementor-column-wrap{align-items:center;}.elementor-370 .elementor-element.elementor-element-2f8bae9.elementor-column > .elementor-column-wrap > .elementor-widget-wrap{align-content:center;}.elementor-370 .elementor-element.elementor-element-64d724d .elementor-text-editor{text-align:left;}.elementor-370 .elementor-element.elementor-element-0ca28c8{text-align:left;}.elementor-370 .elementor-element.elementor-element-0ca28c8 .elementor-social-icon:not(:hover){background-color:#73c69c;}.elementor-370 .elementor-element.elementor-element-0ca28c8 .elementor-social-icon{font-size:36px;padding:0.4em;}.elementor-370 .elementor-element.elementor-element-0ca28c8 .elementor-social-icon:not(:last-child){margin-right:10px;}.elementor-370 .elementor-element.elementor-element-1ae278e .elementor-text-editor{text-align:left;}.elementor-370 .elementor-element.elementor-element-6c5a062 iframe{height:140px;}@media(min-width:768px){.elementor-370 .elementor-element.elementor-element-2f8bae9{width:35.048%;}.elementor-370 .elementor-element.elementor-element-6630761{width:64.952%;}}
@@ -969,7 +977,6 @@ html {
 }
 .button_search_valakax{
 	width: 24% !important;
-	margin-top: 35px !important;
 }
 
 @media screen and (max-width: 782px){
@@ -1107,7 +1114,7 @@ em{font-style:italic}
 
 caption, th, td{font-weight:normal; text-align:left}
 
-.container-wrap, .project-title{background-color:#f8f8f8; position:relative; z-index:10; margin-top:-55px; padding-top:93px; padding-bottom:40px}
+.container-wrap, .project-title{background-color:#f8f8f8; position:relative; z-index:10; padding-bottom:40px}
 
 body[data-header-resize="0"] .container-wrap, body[data-header-resize="0"] .project-title {margin-top:0px; padding-top:40px}
 
@@ -5834,7 +5841,7 @@ body #bbpress-forums fieldset.bbp-form{padding-bottom:20px}
 /*-------------------------------------------------------------------------*/
 /*5.Page+Custom Page Layout Styles
 /*-------------------------------------------------------------------------*/
-#page-header-wrap{height:59px; margin-top:-60px; overflow:hidden; position:relative; background-color:#f8f8f8; -webkit-font-smoothing:antialiased}
+#page-header-wrap{height:59px; overflow:hidden; position:relative; background-color:#f8f8f8; -webkit-font-smoothing:antialiased}
 
 #page-header-wrap[data-animate-in-effect="slide-down"], #page-header-wrap[data-animate-in-effect="slide-down"] #page-header-bg{transition:height 0.85s cubic-bezier(0.725,0.000,0.000,0.995); -moz-transition:height 0.85s cubic-bezier(0.725,0.000,0.000,0.995); -webkit-transition:height 0.85s cubic-bezier(0.725,0.000,0.000,0.995); -o-transition:height 0.85s cubic-bezier(0.725,0.000,0.000,0.995)}
 
