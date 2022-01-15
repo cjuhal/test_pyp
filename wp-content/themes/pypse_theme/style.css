@@ -55,6 +55,7 @@ html {
 .valakax_nav_menu{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #FFF;
 }
 
 .main-menu{
@@ -109,6 +110,7 @@ html {
 
 
 @media screen and (min-width: 993px) {
+  .valakax_nav_menu{ width:100%}
   .valakax_nav_menu ul {
     display: flex;
     flex-wrap:wrap;
@@ -132,6 +134,10 @@ html {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+}
+.valakax_nav_menu li:not(:last-child) {
+  border-right: unset;
+  text-transform: uppercase;
 }
 .logo2{ padding-left:15px; width:380px}
 .header_ .container {
@@ -680,10 +686,9 @@ div#wpform-field-hp {
     width: auto;
   }
     .sub-menu{
-        background: #73C69C !important;
+        padding: 0 0 0.5rem 1rem;
         position: initial;
         display: block;
-        margin-top: 10px;
         margin-bottom: -12px;
         margin-left: -.70rem;
         margin-right: -.70rem;
@@ -783,7 +788,6 @@ li.menu-item.menu-item-type-post_type.menu-item-object-post.nav-item.nav-link.me
         height: 100%;
     }
     .config_menu li.menu-item.menu-item-type-post_type.menu-item-object-page.nav-item.nav-link, .menu-item-type-taxonomy, .menu-item-object-custom, .menu-item-object-post {
-        padding: .70rem !important;
         border-top: 2px solid white;
         border-left: none !important;
         border-right: none !important;

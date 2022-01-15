@@ -122,7 +122,7 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
 				<!-- FIN 2 MENU -->
 
 				<!-- MENU MOBILE -->
-				<nav class="navbar navbar-expand-lg navbar-light hidden_desktop">
+				<nav class="navbar navbar-expand-lg navbar-light hidden_desktop w-100">
 						<div class='collapse navbar-collapse justify-content-md-center' id='menu_mobile'>
 							<?php do_shortcode('[HTML_CUSTOM_MENU]');?>
 						</div>
