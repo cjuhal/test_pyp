@@ -22,7 +22,7 @@ $theme_skin = ( !empty($options['theme-skin']) ) ? $options['theme-skin'] : 'ori
 		
 		</div>
 
-	<div class="container main-content">
+	<div class="main-content">
 		
 		<div class="row">
 			

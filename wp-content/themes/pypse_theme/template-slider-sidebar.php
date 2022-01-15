@@ -197,7 +197,7 @@ do_action('get_breadcrumbs_vlkx');
 
 	<div class="container sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
 
-<div class="container main-content">
+<div class="main-content">
 
     <div class="row">
                 <!--/content-->

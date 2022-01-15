@@ -8,7 +8,7 @@
 
 <div class="container-wrap pt-0">
 		
-	<div class="container main-content">
+	<div class="main-content">
 		
 		<div class="row">
 			

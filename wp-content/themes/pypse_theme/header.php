@@ -98,6 +98,9 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
 
 				<!-- 2 MENU -->
 				<nav class="navbar navbar-expand navbar-light mt-submenu">
+				<button class="bg-white hidden_desktop toggle_vlkx" type="button" data-toggle="collapse" data-target="#menu_mobile" aria-controls="menu_mobile" aria-expanded="false">
+    					<span class="navbar-toggler-icon"></span>
+  					</button>
 					<div class="collapse navbar-collapse" style="justify-content: flex-end">
 						<div class="navbar-nav lr-auto">
 							<a class="border nav-link button_contact" href="/contactanos">
@@ -114,9 +117,6 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
 
 				<!-- MENU MOBILE -->
 				<nav class="navbar navbar-expand-lg navbar-light hidden_desktop">
-					<button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#menu_mobile" aria-controls="menu_mobile" aria-expanded="false">
-    					<span class="navbar-toggler-icon"></span>
-  					</button>
 						<div class='collapse navbar-collapse justify-content-md-center' id='menu_mobile'>
 							<?php do_shortcode('[HTML_CUSTOM_MENU]');?>
 						</div>
