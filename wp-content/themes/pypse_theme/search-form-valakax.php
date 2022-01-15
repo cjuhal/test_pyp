@@ -1,4 +1,4 @@
-<form id="form_search" role="search" method="get" class="search-form mb-5" action="<?php echo '/category/'.get_category_slug();?>">
+<form id="form_search" role="search" method="get" class="search-form mb-5" action="<?php echo home_url().'/category/'.get_category_slug();?>">
 	
 	<div class="input_search_valakax">
 		<input type="text" class="search-field" style="border: 1px solid grey;padding: 12px 10px !important;" placeholder="Buscador" value="<?php echo get_filter_param();?>" name="filter" id="filter" title="Buscador" />

@@ -580,6 +580,66 @@ function get_search_form_valakax() {
 	echo $result;
 }
 
+
+
+
+//dropdown arrows
+if ( !function_exists( 'valakax_custom_nav_menu' ) ) {
+	function valakax_custom_nav_menu() {
+
+		class Valakax_Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
+
+			function start_el(&$output, $item, $depth=0, $args=[], $id=0) {
+				$output .= "<li class='" .  implode(" ", $item->classes) . "'>";
+		 
+				if ($item->url && $item->url != '#') {
+					$output .= '<a href="' . $item->url . '">';
+				} else {
+					$output .= '<span>';
+				}
+		 
+				$output .= $item->title;
+		 
+				if ($item->url && $item->url != '#') {
+					$output .= '</a>';
+				} else {
+					if ($args->show_carets && $args->walker->has_children) {
+						$output .= '<i style="height: fit-content;" class="caret fa fa-angle-down"></i>';
+					}
+					$output .= '</span>';
+				}
+
+
+			}
+
+		}
+
+	}
+}
+
+valakax_custom_nav_menu();
+
+function HTML_custom_menu_valakax_mobile(){
+	$menu = "<nav class='navbar navbar-expand-lg navbar-dark'>";
+	$menu .= "<div class='collapse navbar-collapse justify-content-md-center' id='navbarsExample08'>";
+	$menu .= HTML_custom_menu_valakax();
+	return $menu;
+}
+
+function HTML_custom_menu_valakax(){
+	$menu = "<nav class='navbar navbar-expand-lg navbar-dark'>";
+	$menu .= "<div class='collapse navbar-collapse justify-content-md-center'>";
+	$menu .= "<ul class='navbar-nav'>";
+	$menu .= wp_nav_menu(array('theme_location' => 'top_nav','menu_class' => 'main-menu','container' => 'nav','container_class' => 'valakax_nav_menu','walker' => new Valakax_Custom_Walker_Nav_Menu(), 'show_carets' => true));
+	$menu .= "</ul>";
+	$menu .= "</div>";
+	$menu .= "</nav>";
+	return $menu;
+}
+
+add_shortcode( 'HTML_CUSTOM_MENU', 'HTML_custom_menu_valakax' );
+add_shortcode( 'HTML_CUSTOM_MENU_MOBILE', 'HTML_custom_menu_valakax_mobile' );
+
 function get_empty_search_result_valakax() {
 	$emptyResult = '<span class="h3 teal">Sin Resultados</span>
 				<div class="alert mt-3 p-2 recuadro rosa">
@@ -589,7 +649,7 @@ function get_empty_search_result_valakax() {
 }
  /* buscador general insertado en top menu */
 function general_search_menu_vlkx( $items, $args ) {
-    return $items.'<li class="menu-item menu-item-object-category menu-item-type-taxonomy nav-item nav-link" style="background: transparent !important; padding:0px">'.do_shortcode('[wpdreams_ajaxsearchlite]').'</li>';
+    return $items.'<li class="menu-item menu-item-object-category menu-item-type-taxonomy nav-item nav-link" style="background: transparent !important; padding:0px">'.do_shortcode('[wd_asp id=1]').'</li>';
 	//'<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-link" style="background: transparent !important;padding: 0px;">'.do_shortcode('[ivory-search id="4070" title="Default Search Form"]').'</li>';
   }
   add_filter('wp_nav_menu_items','general_search_menu_vlkx', 10, 2);
@@ -625,8 +685,6 @@ function get_search_categoires_post(){
 					$the_query = new WP_Query( $args );
 					return $the_query;
 }
-
-
 	function valakax_pagination($wp_custo_query) {
 
 		global $options;
@@ -647,6 +705,49 @@ function get_search_categoires_post(){
 
 			      echo paginate_links(array(
 			          'base' => get_pagenum_link(1) . '%_%',
+			          'format' => $format,
+			          'current' => $current,
+			          'total' => $total_pages,
+			          'prev_text'    => 'Anterior',
+    				  'next_text'    => 'Siguiente',
+			        ));
+
+				  echo  '</div>';
+
+			    }
+	}
+		//regular pagination
+		else{
+
+			if( get_next_posts_link() || get_previous_posts_link() ) {
+				echo '<div id="pagination" data-is-text="'.__("All items loaded", NECTAR_THEME_NAME).'">
+				      <div class="prev">'.get_previous_posts_link('&laquo; Previous').'</div>
+				      <div class="next">'.get_next_posts_link('NextPrevious &raquo;','').'</div>
+			          </div>';
+
+	        }
+		}
+
+
+	}
+
+
+	function valakax_pagination_for_search($wp_custo_query) {
+
+		global $options;
+		if( !empty($options['extra_pagination']) && $options['extra_pagination'] == '1' ){
+
+			    $wp_custo_query->query_vars['paged'] > 1 ? $current = $wp_custo_query->query_vars['paged'] : $current = 1;
+			    $total_pages = $wp_custo_query->max_num_pages;
+
+			    if ($total_pages > 1){
+
+			      $permalink_structure = get_option('permalink_structure');
+				  $query_type = (count($_GET));
+			      $format = $query_type;
+				  echo '<div id="pagination" data-is-text="'.__("All items loaded", NECTAR_THEME_NAME).'">';
+			      echo paginate_links(array(
+			          'base' => home_url().'/page/'.'%#%'.'/',
 			          'format' => $format,
 			          'current' => $current,
 			          'total' => $total_pages,

@@ -88,6 +88,10 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
                     <span class="navbar-toggler-icon" id="flacsomenu"></span>
                 </button>
                 <div class="collapse navbar-collapse">
+				<div class="navbar-nav lr-auto">
+    				<a class="border nav-link button_contact" href="/contactanos">
+					<i class="fa fa-envelope" style="vertical-align: middle;position: static;"></i><span>CONTACTANOS</span></a>
+                </div>
                     <ul id="menu-top-flacso"class="navbar-nav mr-auto">
                         <li class="nav-item"><a class="nav-link" href="http://flacso.org.ar/institucional/" target="_blank"><span> FLACSO</span></a></li>
                         <li class="nav-item"><a class="nav-link" href="http://flacso.org.ar/biblioteca/" target="_blank"><span>Biblioteca</span></a></li>
@@ -101,12 +105,13 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
                 <div class="pl-logo1" style="text-align: center">
                     <img src="<?php echo get_template_directory_uri();?>/img/logo-1.png">
                 </div>
-                <div class="pt-logo2">
-                    <img style="padding-left:15px;" src="<?php echo get_template_directory_uri();?>/img/logo-2.png" >
-                </div>
-				<div class="pt-logo3">
-    				<a class="border nav-link button_contact" href="/contactanos">
-					<i class="fa fa-envelope" style="vertical-align: middle;position: static;"></i><span>CONTACTANOS</span></a>
+                <div class="pt-logo2 hidden_mobile">
+                    <img style="padding-left:15px; width:250px" src="<?php echo get_template_directory_uri();?>/img/logo-2.png" >
+					<!-- MENU -->
+					<div class="hidden_mobile">
+						<?php do_shortcode('[HTML_CUSTOM_MENU]');?>
+					</div>
+					<!-- FIN MENU -->
                 </div>
             </div>
             <!--/row-->
@@ -115,26 +120,7 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
 </div><!--/header-outer-->
 <!-- FIN HEADER -->
 
-<!-- MENU -->
-<?php 
-	echo "<nav class='navbar navbar-expand-lg navbar-dark bg-teal config_menu'>
-	<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarsExample08' aria-controls='navbarsExample08' aria-expanded='false' aria-label='Toggle navigation'>
-		<span class='navbar-toggler-icon'></span>
-	</button>
 
-	<div class='collapse navbar-collapse justify-content-md-center' id='navbarsExample08'>";
-		if($theme_skin != 'material') {
-			echo "<ul class='navbar-nav'>";
-				if($has_main_menu == 'true') {
-					wp_nav_menu( array('walker' => new Nectar_Arrow_Walker_Nav_Menu, 'theme_location' => 'top_nav', 'container' => '', 'items_wrap' => '%3$s' ) );
-				} else {
-					echo '<li class="no-menu-assigned"><a href="#">No menu assigned</a></li>';
-				}
-				echo "</ul>";
-			} //non material skin
-	echo "</div></nav>";
-?>
-<!-- FIN MENU -->
 
 
 <!-- SPINNER -->
