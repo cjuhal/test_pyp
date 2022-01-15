@@ -24,6 +24,12 @@
 
 <?php if(!empty($options['google-analytics'])) echo $options['google-analytics']; ?>
 
+<style>
+html {
+    margin-top: 0px !important;
+}
+</style>
+
 </head>
 
 <?php
