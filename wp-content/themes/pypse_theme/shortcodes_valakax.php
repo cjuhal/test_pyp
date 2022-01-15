@@ -619,26 +619,15 @@ if ( !function_exists( 'valakax_custom_nav_menu' ) ) {
 
 valakax_custom_nav_menu();
 
-function HTML_custom_menu_valakax_mobile(){
-	$menu = "<nav class='navbar navbar-expand-lg navbar-dark'>";
-	$menu .= "<div class='collapse navbar-collapse justify-content-md-center' id='navbarsExample08'>";
-	$menu .= HTML_custom_menu_valakax();
-	return $menu;
-}
 
 function HTML_custom_menu_valakax(){
-	$menu = "<nav class='navbar navbar-expand-lg navbar-dark'>";
-	$menu .= "<div class='collapse navbar-collapse justify-content-md-center'>";
-	$menu .= "<ul class='navbar-nav'>";
-	$menu .= wp_nav_menu(array('theme_location' => 'top_nav','menu_class' => 'main-menu','container' => 'nav','container_class' => 'valakax_nav_menu','walker' => new Valakax_Custom_Walker_Nav_Menu(), 'show_carets' => true));
-	$menu .= "</ul>";
-	$menu .= "</div>";
-	$menu .= "</nav>";
+
+	$menu = wp_nav_menu(array('theme_location' => 'top_nav','menu_class' => 'main-menu','container' => 'nav','container_class' => 'valakax_nav_menu','walker' => new Valakax_Custom_Walker_Nav_Menu(), 'show_carets' => true));
+
 	return $menu;
 }
 
 add_shortcode( 'HTML_CUSTOM_MENU', 'HTML_custom_menu_valakax' );
-add_shortcode( 'HTML_CUSTOM_MENU_MOBILE', 'HTML_custom_menu_valakax_mobile' );
 
 function get_empty_search_result_valakax() {
 	$emptyResult = '<span class="h3 teal">Sin Resultados</span>

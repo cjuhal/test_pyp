@@ -83,35 +83,54 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
 <div id="header-outer" >
 	<header class="header_">
 		<div class="container">
-            <nav class="navbar navbar-expand navbar-light mt-submenu">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#flacsomenu" aria-controls="flacsomenu" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon" id="flacsomenu"></span>
-                </button>
-                <div class="collapse navbar-collapse">
-				<div class="navbar-nav lr-auto">
-    				<a class="border nav-link button_contact" href="/contactanos">
-					<i class="fa fa-envelope" style="vertical-align: middle;position: static;"></i><span>CONTACTANOS</span></a>
-                </div>
-                    <ul id="menu-top-flacso"class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" href="http://flacso.org.ar/institucional/" target="_blank"><span> FLACSO</span></a></li>
-                        <li class="nav-item"><a class="nav-link" href="http://flacso.org.ar/biblioteca/" target="_blank"><span>Biblioteca</span></a></li>
-                        <li class="nav-item"><a class="nav-link" href="http://flacso.org.ar/flacso-virtual/" target="_blank"><span>FLACSO Virtual</span></a></li>
-                    </ul>
-                </div>
-            </nav>
+
 
 
             <div class="row" style="width: 100%;">
-                <div class="pl-logo1" style="text-align: center">
+                
+				<div class="pl-logo1" style="text-align: center">
                     <img src="<?php echo get_template_directory_uri();?>/img/logo-1.png">
                 </div>
-                <div class="pt-logo2 hidden_mobile">
-                    <img style="padding-left:15px; width:250px" src="<?php echo get_template_directory_uri();?>/img/logo-2.png" >
-					<!-- MENU -->
-					<div class="hidden_mobile">
-						<?php do_shortcode('[HTML_CUSTOM_MENU]');?>
+
+                <div class="pt-logo2 ">
+					<div class="flex_vlkx">
+				<img class="logo2" src="<?php echo get_template_directory_uri();?>/img/logo-2.png" >
+
+				<!-- 2 MENU -->
+				<nav class="navbar navbar-expand navbar-light mt-submenu">
+					<div class="collapse navbar-collapse" style="justify-content: flex-end">
+						<div class="navbar-nav lr-auto">
+							<a class="border nav-link button_contact" href="/contactanos">
+							<i class="fa fa-envelope" style="vertical-align: middle;position: static;"></i><span class="hidden_mobile">CONTACTANOS</span></a>
+						</div>
+							<ul id="menu-top-flacso"class="navbar-nav mr-auto">
+								<li class="nav-item"><a class="nav-link" href="http://flacso.org.ar/institucional/" target="_blank"><span> FLACSO</span></a></li>
+								<li class="nav-item"><a class="nav-link" href="http://flacso.org.ar/biblioteca/" target="_blank"><span>Biblioteca</span></a></li>
+								<li class="nav-item"><a class="nav-link" href="http://flacso.org.ar/flacso-virtual/" target="_blank"><span>FLACSO Virtual</span></a></li>
+							</ul>
 					</div>
-					<!-- FIN MENU -->
+				</nav>
+				<!-- FIN 2 MENU -->
+
+				<!-- MENU MOBILE -->
+				<nav class="navbar navbar-expand-lg navbar-light hidden_desktop">
+					<button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#menu_mobile" aria-controls="menu_mobile" aria-expanded="false">
+    					<span class="navbar-toggler-icon"></span>
+  					</button>
+						<div class='collapse navbar-collapse justify-content-md-center' id='menu_mobile'>
+							<?php do_shortcode('[HTML_CUSTOM_MENU]');?>
+						</div>
+  					</nav>
+				<!-- FIN MENU MOBILE -->
+			</div>
+					
+					<!-- MENU DESKTOP -->
+					<nav class="navbar navbar-expand-lg navbar-light hidden_mobile">
+						<div class='collapse navbar-collapse justify-content-md-center' id='menu_mobile'>
+							<?php do_shortcode('[HTML_CUSTOM_MENU]');?>
+						</div>
+  					</nav>
+					<!-- FIN MENU DESKTOP -->
                 </div>
             </div>
             <!--/row-->

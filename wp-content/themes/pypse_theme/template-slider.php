@@ -196,7 +196,7 @@ echo do_shortcode('[smartslider3 slider=2]');
 <?php if($headerFormat == 'left-header') echo '</div>'; ?>
 <?php do_action('get_breadcrumbs_vlkx');?>
 	<div class="container sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
-<div class="container main-content">
+<div class="main-content">
 
     <div class="row">
 
