@@ -32,7 +32,7 @@ $theme_skin = ( !empty($options['theme-skin']) ) ? $options['theme-skin'] : 'ori
 				apply_desing_categories_post('includes/post-templates/entry', $wp_query); 
 			?>
 			</div><!--/ post-area-->
-			<?php valakax_pagination($wp_query); ?>
+			<?php valakax_pagination_for_search($wp_query); ?>
 			</div><!--/span_9-->
 			<div id="sidebar" data-nectar-ss="false" class="col span_3 col_last mt-5">
 				<?php get_sidebar(); ?>
