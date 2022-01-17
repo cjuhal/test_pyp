@@ -1,6 +1,7 @@
 <?php
-remove_action( 'gallery', 'gallery_shortcode' );
-add_shortcode( 'gallery', 'gallery_shortcode_valakax' );
+remove_action('gallery', 'gallery_shortcode');
+add_shortcode('gallery', 'gallery_shortcode_valakax');
+wp_enqueue_script("jquery");
 
 
 
@@ -38,15 +39,16 @@ add_shortcode( 'gallery', 'gallery_shortcode_valakax' );
  * }
  * @return string HTML content to display gallery.
  */
-function gallery_shortcode_valakax( $attr ) {
+function gallery_shortcode_valakax($attr)
+{
 	$post = get_post();
 
 	static $instance = 0;
 	$instance++;
 
-	if ( ! empty( $attr['ids'] ) ) {
+	if (!empty($attr['ids'])) {
 		// 'ids' is explicitly ordered, unless you specify otherwise.
-		if ( empty( $attr['orderby'] ) ) {
+		if (empty($attr['orderby'])) {
 			$attr['orderby'] = 'post__in';
 		}
 		$attr['include'] = $attr['ids'];
@@ -67,12 +69,12 @@ function gallery_shortcode_valakax( $attr ) {
 	 * @param array  $attr     Attributes of the gallery shortcode.
 	 * @param int    $instance Unique numeric ID of this gallery shortcode instance.
 	 */
-	$output = apply_filters( 'post_gallery', '', $attr, $instance );
-	if ( $output != '' ) {
+	$output = apply_filters('post_gallery', '', $attr, $instance);
+	if ($output != '') {
 		return $output;
 	}
 
-	$html5 = current_theme_supports( 'html5', 'gallery' );
+	$html5 = current_theme_supports('html5', 'gallery');
 	$atts  = shortcode_atts(
 		array(
 			'order'      => 'ASC',
@@ -91,9 +93,9 @@ function gallery_shortcode_valakax( $attr ) {
 		'gallery'
 	);
 
-	$id = intval( $atts['id'] );
+	$id = intval($atts['id']);
 
-	if ( ! empty( $atts['include'] ) ) {
+	if (!empty($atts['include'])) {
 		$_attachments = get_posts(
 			array(
 				'include'        => $atts['include'],
@@ -106,10 +108,10 @@ function gallery_shortcode_valakax( $attr ) {
 		);
 
 		$attachments = array();
-		foreach ( $_attachments as $key => $val ) {
-			$attachments[ $val->ID ] = $_attachments[ $key ];
+		foreach ($_attachments as $key => $val) {
+			$attachments[$val->ID] = $_attachments[$key];
 		}
-	} elseif ( ! empty( $atts['exclude'] ) ) {
+	} elseif (!empty($atts['exclude'])) {
 		$attachments = get_children(
 			array(
 				'post_parent'    => $id,
@@ -134,34 +136,34 @@ function gallery_shortcode_valakax( $attr ) {
 		);
 	}
 
-	if ( empty( $attachments ) ) {
+	if (empty($attachments)) {
 		return '';
 	}
 
-	if ( is_feed() ) {
+	if (is_feed()) {
 		$output = "\n";
-		foreach ( $attachments as $att_id => $attachment ) {
-			$output .= wp_get_attachment_link( $att_id, $atts['size'], true ) . "\n";
+		foreach ($attachments as $att_id => $attachment) {
+			$output .= wp_get_attachment_link($att_id, $atts['size'], true) . "\n";
 		}
 		return $output;
 	}
 
-	$itemtag    = tag_escape( $atts['itemtag'] );
-	$captiontag = tag_escape( $atts['captiontag'] );
-	$icontag    = tag_escape( $atts['icontag'] );
-	$valid_tags = wp_kses_allowed_html( 'post' );
-	if ( ! isset( $valid_tags[ $itemtag ] ) ) {
+	$itemtag    = tag_escape($atts['itemtag']);
+	$captiontag = tag_escape($atts['captiontag']);
+	$icontag    = tag_escape($atts['icontag']);
+	$valid_tags = wp_kses_allowed_html('post');
+	if (!isset($valid_tags[$itemtag])) {
 		$itemtag = 'dl';
 	}
-	if ( ! isset( $valid_tags[ $captiontag ] ) ) {
+	if (!isset($valid_tags[$captiontag])) {
 		$captiontag = 'dd';
 	}
-	if ( ! isset( $valid_tags[ $icontag ] ) ) {
+	if (!isset($valid_tags[$icontag])) {
 		$icontag = 'dt';
 	}
 
-	$columns   = intval( $atts['columns'] );
-	$itemwidth = $columns > 0 ? floor( 100 / $columns ) : 100;
+	$columns   = intval($atts['columns']);
+	$itemwidth = $columns > 0 ? floor(100 / $columns) : 100;
 	$float     = is_rtl() ? 'right' : 'left';
 
 	$selector = "gallery-{$instance}";
@@ -177,7 +179,7 @@ function gallery_shortcode_valakax( $attr ) {
 	 *                    Defaults to false if the theme supports HTML5 galleries.
 	 *                    Otherwise, defaults to true.
 	 */
-	if ( apply_filters( 'use_default_gallery_style', ! $html5 ) ) {
+	if (apply_filters('use_default_gallery_style', !$html5)) {
 		$gallery_style = "
 		<style type='text/css'>
 			#{$selector} {
@@ -199,7 +201,7 @@ function gallery_shortcode_valakax( $attr ) {
 		</style>\n\t\t";
 	}
 
-	$size_class  = sanitize_html_class( $atts['size'] );
+	$size_class  = sanitize_html_class($atts['size']);
 	$gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
 
 	/**
@@ -210,24 +212,24 @@ function gallery_shortcode_valakax( $attr ) {
 	 * @param string $gallery_style Default CSS styles and opening HTML div container
 	 *                              for the gallery shortcode output.
 	 */
-	$output = apply_filters( 'gallery_style', $gallery_style . $gallery_div );
+	$output = apply_filters('gallery_style', $gallery_style . $gallery_div);
 
 	$i = 0;
-	foreach ( $attachments as $id => $attachment ) {
+	foreach ($attachments as $id => $attachment) {
 
-		$attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';
-		if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
-			$image_output = wp_get_attachment_link_valakax( $id, $atts['size'], false, false, false, $attr );
-		} elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
-			$image_output = wp_get_attachment_image_valakax( $id, $atts['size'], false, $attr, true );
+		$attr = (trim($attachment->post_excerpt)) ? array('aria-describedby' => "$selector-$id") : '';
+		if (!empty($atts['link']) && 'file' === $atts['link']) {
+			$image_output = wp_get_attachment_link_valakax($id, $atts['size'], false, false, false, $attr);
+		} elseif (!empty($atts['link']) && 'none' === $atts['link']) {
+			$image_output = wp_get_attachment_image_valakax($id, $atts['size'], false, $attr, true);
 		} else {
-			$image_output = wp_get_attachment_link_valakax( $id, $atts['size'], true, false, false, $attr );
+			$image_output = wp_get_attachment_link_valakax($id, $atts['size'], true, false, false, $attr);
 		}
-		$image_meta = wp_get_attachment_metadata( $id );
+		$image_meta = wp_get_attachment_metadata($id);
 
 		$orientation = '';
-		if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
-			$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
+		if (isset($image_meta['height'], $image_meta['width'])) {
+			$orientation = ($image_meta['height'] > $image_meta['width']) ? 'portrait' : 'landscape';
 		}
 
 		$output .= "<{$itemtag} class='gallery-item'>";
@@ -235,25 +237,25 @@ function gallery_shortcode_valakax( $attr ) {
 			<{$icontag} class='gallery-icon {$orientation}'>
 				$image_output
 			</{$icontag}>";
-			if ( $captiontag && trim( $attachment->post_title ) ) {
+		if ($captiontag && trim($attachment->post_title)) {
 			$output .= "
 			<{$captiontag} class='gallery-text-ch wp-caption-text bold mt-1 c-violeta'>
-			" . wptexturize( $attachment->post_title ) . "
+			" . wptexturize($attachment->post_title) . "
 			</{$captiontag}>";
 		}
-		if ( $captiontag && trim( $attachment->post_excerpt ) ) {
+		if ($captiontag && trim($attachment->post_excerpt)) {
 			$output .= "
 				<{$captiontag} class='gallery-text-ch wp-caption-text' id='$selector-$id'>
-				" . wptexturize( $attachment->post_excerpt ) . "
+				" . wptexturize($attachment->post_excerpt) . "
 				</{$captiontag}>";
 		}
 		$output .= "</{$itemtag}>";
-		if ( ! $html5 && $columns > 0 && ++$i % $columns == 0 ) {
+		if (!$html5 && $columns > 0 && ++$i % $columns == 0) {
 			$output .= '<br style="clear: both" />';
 		}
 	}
 
-	if ( ! $html5 && $columns > 0 && $i % $columns !== 0 ) {
+	if (!$html5 && $columns > 0 && $i % $columns !== 0) {
 		$output .= "
 			<br style='clear: both' />";
 	}
@@ -265,38 +267,39 @@ function gallery_shortcode_valakax( $attr ) {
 }
 
 /*funcion para remplazar el html de foto*/
-function wp_get_attachment_image_valakax( $attachment_id, $size = 'thumbnail', $icon = false, $attr = '', $background = false ) {
+function wp_get_attachment_image_valakax($attachment_id, $size = 'thumbnail', $icon = false, $attr = '', $background = false)
+{
 	$html  = '';
-	$image = wp_get_attachment_image_src( $attachment_id, $size, $icon );
-	if ( $image ) {
+	$image = wp_get_attachment_image_src($attachment_id, $size, $icon);
+	if ($image) {
 		list($src, $width, $height) = $image;
-		$hwstring                   = image_hwstring( $width, $height );
+		$hwstring                   = image_hwstring($width, $height);
 		$size_class                 = $size;
-		if ( is_array( $size_class ) ) {
-			$size_class = join( 'x', $size_class );
+		if (is_array($size_class)) {
+			$size_class = join('x', $size_class);
 		}
-		$attachment   = get_post( $attachment_id );
+		$attachment   = get_post($attachment_id);
 		$default_attr = array(
 			'src'   => $src,
 			'class' => "attachment-$size_class size-$size_class",
-			'alt'   => trim( strip_tags( get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) ) ),
+			'alt'   => trim(strip_tags(get_post_meta($attachment_id, '_wp_attachment_image_alt', true))),
 		);
 
-		$attr = wp_parse_args( $attr, $default_attr );
+		$attr = wp_parse_args($attr, $default_attr);
 
 		// Generate 'srcset' and 'sizes' if not already present.
-		if ( empty( $attr['srcset'] ) ) {
-			$image_meta = wp_get_attachment_metadata( $attachment_id );
+		if (empty($attr['srcset'])) {
+			$image_meta = wp_get_attachment_metadata($attachment_id);
 
-			if ( is_array( $image_meta ) ) {
-				$size_array = array( absint( $width ), absint( $height ) );
-				$srcset     = wp_calculate_image_srcset( $size_array, $src, $image_meta, $attachment_id );
-				$sizes      = wp_calculate_image_sizes( $size_array, $src, $image_meta, $attachment_id );
+			if (is_array($image_meta)) {
+				$size_array = array(absint($width), absint($height));
+				$srcset     = wp_calculate_image_srcset($size_array, $src, $image_meta, $attachment_id);
+				$sizes      = wp_calculate_image_sizes($size_array, $src, $image_meta, $attachment_id);
 
-				if ( $srcset && ( $sizes || ! empty( $attr['sizes'] ) ) ) {
+				if ($srcset && ($sizes || !empty($attr['sizes']))) {
 					$attr['srcset'] = $srcset;
 
-					if ( empty( $attr['sizes'] ) ) {
+					if (empty($attr['sizes'])) {
 						$attr['sizes'] = $sizes;
 					}
 				}
@@ -313,15 +316,15 @@ function wp_get_attachment_image_valakax( $attachment_id, $size = 'thumbnail', $
 		 * @param string|array $size       Requested size. Image size or array of width and height values
 		 *                                 (in that order). Default 'thumbnail'.
 		 */
-		$attr = apply_filters( 'wp_get_attachment_image_attributes', $attr, $attachment, $size );
-		$attr = array_map( 'esc_attr', $attr );
-		if($background){
-			$html = rtrim( '<div class="img-ch-size" ' );
-			$html .= 'style="background-image:url('.$attr["src"].'");" ';
+		$attr = apply_filters('wp_get_attachment_image_attributes', $attr, $attachment, $size);
+		$attr = array_map('esc_attr', $attr);
+		if ($background) {
+			$html = rtrim('<div class="img-ch-size" ');
+			$html .= 'style="background-image:url(' . $attr["src"] . '");" ';
 			$html .= ' ></div>';
 		} else {
-			$html = rtrim( "<img $hwstring" );
-			foreach ( $attr as $name => $value ) {
+			$html = rtrim("<img $hwstring");
+			foreach ($attr as $name => $value) {
 				$html .= " $name=" . '"' . $value . '"';
 			}
 			$html .= ' />';
@@ -332,31 +335,32 @@ function wp_get_attachment_image_valakax( $attachment_id, $size = 'thumbnail', $
 }
 
 /*funcion para remplazar el link de imagenes*/
-function wp_get_attachment_link_valakax( $id = 0, $size = 'thumbnail', $permalink = false, $icon = false, $text = false, $attr = '' ) {
-	$_post = get_post( $id );
+function wp_get_attachment_link_valakax($id = 0, $size = 'thumbnail', $permalink = false, $icon = false, $text = false, $attr = '')
+{
+	$_post = get_post($id);
 
-	if ( empty( $_post ) || ( 'attachment' !== $_post->post_type ) || ! $url = wp_get_attachment_url( $_post->ID ) ) {
-		return __( 'Missing Attachment' );
+	if (empty($_post) || ('attachment' !== $_post->post_type) || !$url = wp_get_attachment_url($_post->ID)) {
+		return __('Missing Attachment');
 	}
 
-	if ( $permalink ) {
-		$url = get_attachment_link( $_post->ID );
+	if ($permalink) {
+		$url = get_attachment_link($_post->ID);
 	}
 
-	if ( $text ) {
+	if ($text) {
 		$link_text = $text;
-	} elseif ( $size && 'none' != $size ) {
-		$link_text = wp_get_attachment_image_valakax( $_post->ID, $size, $icon, $attr, true );
+	} elseif ($size && 'none' != $size) {
+		$link_text = wp_get_attachment_image_valakax($_post->ID, $size, $icon, $attr, true);
 	} else {
 		$link_text = '';
 	}
 
-	if ( '' === trim( $link_text ) ) {
+	if ('' === trim($link_text)) {
 		$link_text = $_post->post_title;
 	}
 
-	if ( '' === trim( $link_text ) ) {
-		$link_text = esc_html( pathinfo( get_attached_file( $_post->ID ), PATHINFO_FILENAME ) );
+	if ('' === trim($link_text)) {
+		$link_text = esc_html(pathinfo(get_attached_file($_post->ID), PATHINFO_FILENAME));
 	}
 	/**
 	 * Filters a retrieved attachment page link.
@@ -373,7 +377,7 @@ function wp_get_attachment_link_valakax( $id = 0, $size = 'thumbnail', $permalin
 	 * @param string|bool  $text      If string, will be link text. Default false.
 	 * @param array|string $attr      Array or string of attributes. Default empty.
 	 */
-	return apply_filters( 'wp_get_attachment_link', "<a href='" . esc_url( $url ) . "'>$link_text</a>", $id, $size, $permalink, $icon, $text, $attr );
+	return apply_filters('wp_get_attachment_link', "<a href='" . esc_url($url) . "'>$link_text</a>", $id, $size, $permalink, $icon, $text, $attr);
 }
 
 /**
@@ -383,40 +387,43 @@ function wp_get_attachment_link_valakax( $id = 0, $size = 'thumbnail', $permalin
  * Time: 16:21
  */
 
- /* AGREGAR IMAGEN A LAS ENTRADAS / POST*/
- add_post_type_support( 'post', 'thumbnail' );
- add_theme_support( 'post-thumbnails' );
+/* AGREGAR IMAGEN A LAS ENTRADAS / POST*/
+add_post_type_support('post', 'thumbnail');
+add_theme_support('post-thumbnails');
 
 
 /**
-* configuro los formatos disponibles para el metabox de formatos
-*/
-add_action( 'after_setup_theme', 'wpsites_child_theme_posts_formats', 11 );
-function wpsites_child_theme_posts_formats(){
- add_theme_support( 'post-formats', array(
-    'quote',
-    ) );
+ * configuro los formatos disponibles para el metabox de formatos
+ */
+add_action('after_setup_theme', 'wpsites_child_theme_posts_formats', 11);
+function wpsites_child_theme_posts_formats()
+{
+	add_theme_support('post-formats', array(
+		'quote',
+	));
 }
 
 
 /* shortcode recuadro */
-function recuadro_inicio($atts, $content = null){
-    $p = shortcode_atts( array (
-        'color' => 'turquesa'
-    ), $atts );
-    return '<div class="recuadro '.$p['color'].'">'.$content.'</div>';
+function recuadro_inicio($atts, $content = null)
+{
+	$p = shortcode_atts(array(
+		'color' => 'turquesa'
+	), $atts);
+	return '<div class="recuadro ' . $p['color'] . '">' . $content . '</div>';
 }
-add_shortcode('recuadro','recuadro_inicio');
+add_shortcode('recuadro', 'recuadro_inicio');
 
 /* shortcode conteiner*/
-function conteiner_fx($atts, $content = null){
-    $p = shortcode_atts( array (
-        'color' => 'turquesa'
-    ), $atts );
-    return '<div style="width:100%; margin:15px 0px;">'.$content.'</div>';
+function conteiner_fx($atts, $content = null)
+{
+	$p = shortcode_atts(array(
+		'color' => 'turquesa'
+	), $atts);
+	return '<div style="width:100%; margin:15px 0px;">' . $content . '</div>';
 }
 
-add_shortcode('conteiner','conteiner_fx');
+add_shortcode('conteiner', 'conteiner_fx');
 
 /* modificar el tamaño por default de un video de wordpress */
 
@@ -427,7 +434,8 @@ add_filter('embed_defaults', 'size_video_wordpress_ch');*/
 
 /*configuracion del tamaño de iframe*/
 
-function crunchify_embed_defaults($embed_size){
+function crunchify_embed_defaults($embed_size)
+{
 	$embed_size['width'] = 610;
 	$embed_size['height'] = 500;
 	return $embed_size;
@@ -441,29 +449,32 @@ recibo una categoria y me fijo a que padre pertenece,
  dependiendo de ello el link seteado sera a su propia pagina
   de categorias o a una personalizada en slug
   */
-function get_link_category_valakax($category){
-	if ($category->parent == 7){
-		return '/'.$category->slug;
+function get_link_category_valakax($category)
+{
+	if ($category->parent == 7) {
+		return '/' . $category->slug;
 	} else {
-		return get_category_link( $category->term_id );
+		return get_category_link($category->term_id);
 	}
 }
 
 
 /* agregar class a una funcion del theme silent*/
-function valakax_menu_classes($classes, $item, $args){ 
-    if ($args->theme_location == 'top_nav') // como nombraste el menu  // linea 262 en header.php
-    { 
-    $classes[] = 'nav-item nav-link';
-    } 
-    return $classes; 
-    }
-    
-	add_filter('nav_menu_css_class', 'valakax_menu_classes',1,3);
+function valakax_menu_classes($classes, $item, $args)
+{
+	if ($args->theme_location == 'top_nav') // como nombraste el menu  // linea 262 en header.php
+	{
+		$classes[] = 'nav-item nav-link';
+	}
+	return $classes;
+}
+
+add_filter('nav_menu_css_class', 'valakax_menu_classes', 1, 3);
 
 /* personalizar colores del editor de wordpresss*/
 
-function wp_dinapyme_personalizar_colores_mce( $opciones ) {
+function wp_dinapyme_personalizar_colores_mce($opciones)
+{
 
 	// el array $colores_base contiene los colores estándar del editor de WordPress
 	$colores_base = '
@@ -508,7 +519,7 @@ function wp_dinapyme_personalizar_colores_mce( $opciones ) {
 			    "CC99FF", "Plum",
 			    "FFFFFF", "White"
 			';
-	
+
 	// la variable $mis_colores contiene los colores pesonalizados que añadimos.
 	// Podemos añadir más colores al array.
 	$mis_colores = '
@@ -520,10 +531,10 @@ function wp_dinapyme_personalizar_colores_mce( $opciones ) {
 					"CA182A", "Salmon PYPSE",
 					"061235", "Azul Oscuro PYPSE"
 				';
-				
-	$opciones['textcolor_map'] = '['.$colores_base.', '.$mis_colores.']';  // asignamos al array texcolor_map los colores base + mis colores
+
+	$opciones['textcolor_map'] = '[' . $colores_base . ', ' . $mis_colores . ']';  // asignamos al array texcolor_map los colores base + mis colores
 	$opciones['textcolor_rows'] = 6;  // $mis_colores irán en la sexta fila
-	
+
 	return $opciones;
 }
 
@@ -537,15 +548,16 @@ add_filter('tiny_mce_before_init', 'wp_dinapyme_personalizar_colores_mce');
 # Search related
 #-----------------------------------------------------------------#
 
-if(!function_exists('change_wp_search_size_valakax')){
-	function change_wp_search_size_valakax($query) {
-		if ( $query->is_search )
+if (!function_exists('change_wp_search_size_valakax')) {
+	function change_wp_search_size_valakax($query)
+	{
+		if ($query->is_search)
 			$query->query_vars['posts_per_page'] = 5;
 
 		return $query;
 	}
 }
-if(!is_admin()) {
+if (!is_admin()) {
 	add_filter('pre_get_posts', 'change_wp_search_size_valakax');
 }
 
@@ -555,12 +567,13 @@ if(!is_admin()) {
  * Display search form valakax.
  *
  */
-function get_search_form_valakax() {
+function get_search_form_valakax()
+{
 
-	$search_form_template = locate_template( 'search-form-valakax.php' );
-	if ( '' != $search_form_template ) {
+	$search_form_template = locate_template('search-form-valakax.php');
+	if ('' != $search_form_template) {
 		ob_start();
-		require( $search_form_template );
+		require($search_form_template);
 		$form = ob_get_clean();
 	}
 
@@ -573,7 +586,7 @@ function get_search_form_valakax() {
 	 */
 	$result = null;
 
-	if ( $result === null ) {
+	if ($result === null) {
 		$result = $form;
 	}
 
@@ -584,231 +597,231 @@ function get_search_form_valakax() {
 
 
 //dropdown arrows
-if ( !function_exists( 'valakax_custom_nav_menu' ) ) {
-	function valakax_custom_nav_menu() {
+if (!function_exists('valakax_custom_nav_menu')) {
+	function valakax_custom_nav_menu()
+	{
 
-		class Valakax_Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
-
-			function start_el(&$output, $item, $depth=0, $args=[], $id=0) {
+		class Valakax_Custom_Walker_Nav_Menu extends Walker_Nav_Menu
+		{
+			public static $index = 0;
+			function start_el(&$output, $item, $depth = 0, $args = [], $id = 0)
+			{
 				$item_class = $item->classes;
-				if($args->show_carets && $args->walker->has_children){
-					$clases_parent_child = ["nav-link dropdown-toggle"];
-					array_push($item_class, $item->classes, $clases_parent_child);
-					$attr_parent_child = 'role="button" data-bs-toggle="dropdown" aria-expanded="false"';
+				$link_dropdown = '';
+				$attr_parent_child = '';
+				if ($args->show_carets && $args->walker->has_children) {
+					//<a>
+					$link_dropdown = 'nav-link dropdown-toggle';
+					$attr_parent_child = 'role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"';
+					//<li>
+					// $clases_parent_child = ["dropdown-toggle", "nav-link"];
+					array_push($item_class, "dropdown");
 				}
 
-				$output .= "<li class='" .  implode(" ", $item->classes) . "'". $attr_parent_child."id='navbarDropdown".$id."'>";
-		 
-				if ($item->url && $item->url != '#') {
-					$output .= '<a href="' . $item->url . '">';
-				} else {
-					$output .= '<span>';
+				$output .= "<li class='" .  implode(" ", $item_class) . "'>";
+
+				if ($item->url) {
+					$output .= '<a href="' . $item->url . '" class="' . $link_dropdown . '"' . $attr_parent_child . ' id="navbarDropdown' . self::$index . '">';
 				}
-		 
+
 				$output .= $item->title;
-		 
-				if ($item->url && $item->url != '#') {
+
+				if ($item->url) {
 					$output .= '</a>';
-				} else {
-					if ($args->show_carets && $args->walker->has_children) {
-						$output .= '<i style="height: fit-content;" class="caret fa fa-angle-down"></i>';
-					}
-					$output .= '</span>';
 				}
-
-
 			}
-			
+
 			/**
-	 * Starts the list before the elements are added.
-	 *
-	 * @since 3.0.0
-	 *
-	 * @see Walker::start_lvl()
-	 *
-	 * @param string   $output Used to append additional content (passed by reference).
-	 * @param int      $depth  Depth of menu item. Used for padding.
-	 * @param stdClass $args   An object of wp_nav_menu() arguments.
-	 */
-	function start_lvl( &$output, $depth = 0, $args = null ) {
-		if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
-			$t = '';
-			$n = '';
-		} else {
-			$t = "\t";
-			$n = "\n";
+			 * Starts the list before the elements are added.
+			 *
+			 * @since 3.0.0
+			 *
+			 * @see Walker::start_lvl()
+			 *
+			 * @param string   $output Used to append additional content (passed by reference).
+			 * @param int      $depth  Depth of menu item. Used for padding.
+			 * @param stdClass $args   An object of wp_nav_menu() arguments.
+			 */
+			function start_lvl(&$output, $depth = 0, $args = null)
+			{
+				if (isset($args->item_spacing) && 'discard' === $args->item_spacing) {
+					$t = '';
+					$n = '';
+				} else {
+					$t = "\t";
+					$n = "\n";
+				}
+				$indent = str_repeat($t, $depth);
+
+				// Default class.
+				$classes = array('sub-menu', 'dropdown-menu', 'sub_menu_box');
+
+				/**
+				 * Filters the CSS class(es) applied to a menu list element.
+				 *
+				 * @since 4.8.0
+				 *
+				 * @param string[] $classes Array of the CSS classes that are applied to the menu `<ul>` element.
+				 * @param stdClass $args    An object of `wp_nav_menu()` arguments.
+				 * @param int      $depth   Depth of menu item. Used for padding.
+				 */
+				$class_names = implode(' ', apply_filters('nav_menu_submenu_css_class', $classes, $args, $depth));
+				$class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
+
+				$output .= "{$n}{$indent}<ul$class_names aria-labelledby='navbarDropdown".self::$index."'" . $args->id . ">{$n}";
+				self::$index+=1;
+			}
 		}
-		$indent = str_repeat( $t, $depth );
-
-		// Default class.
-		$classes = array( 'sub-menu', 'dropdown-menu' );
-
-		/**
-		 * Filters the CSS class(es) applied to a menu list element.
-		 *
-		 * @since 4.8.0
-		 *
-		 * @param string[] $classes Array of the CSS classes that are applied to the menu `<ul>` element.
-		 * @param stdClass $args    An object of `wp_nav_menu()` arguments.
-		 * @param int      $depth   Depth of menu item. Used for padding.
-		 */
-		$class_names = implode( ' ', apply_filters( 'nav_menu_submenu_css_class', $classes, $args, $depth ) );
-		$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
-
-		$output .= "{$n}{$indent}<ul$class_names aria-labelledby='navbarDropdown'".$args->id.">{$n}";
-	}
-
-
-		}
-
 	}
 }
 
 valakax_custom_nav_menu();
 
 
-function HTML_custom_menu_valakax(){
+function HTML_custom_menu_valakax()
+{
 
-	$menu = wp_nav_menu(array('theme_location' => 'top_nav','menu_class' => 'main-menu','container' => 'nav','container_class' => 'valakax_nav_menu','walker' => new Valakax_Custom_Walker_Nav_Menu(), 'show_carets' => true));
+	$menu = wp_nav_menu(array('theme_location' => 'top_nav', 'menu_class' => 'main-menu', 'container' => 'nav', 'container_class' => 'valakax_nav_menu', 'walker' => new Valakax_Custom_Walker_Nav_Menu(), 'show_carets' => true));
 
 	return $menu;
 }
 
-add_shortcode( 'HTML_CUSTOM_MENU', 'HTML_custom_menu_valakax' );
+add_shortcode('HTML_CUSTOM_MENU', 'HTML_custom_menu_valakax');
 
-function get_empty_search_result_valakax() {
+function get_empty_search_result_valakax()
+{
 	$emptyResult = '<span class="h3 teal">Sin Resultados</span>
 				<div class="alert mt-3 p-2 recuadro rosa">
 			 	 <p class="h5 p-4 recuadro" style="text-align: center">No se encontraron resultados, modifique su busqueda y vuelva a intentarlo</p>
 				</div>';
 	echo $emptyResult;
 }
- /* buscador general insertado en top menu */
-function general_search_menu_vlkx( $items, $args ) {
-    return $items.'<li class="menu-item menu-item-object-category menu-item-type-taxonomy nav-item nav-link" style="background: transparent !important; padding:0px">'.do_shortcode('[wd_asp id=1]').'</li>';
+/* buscador general insertado en top menu */
+function general_search_menu_vlkx($items, $args)
+{
+	return $items . '<li class="menu-item menu-item-object-category menu-item-type-taxonomy nav-item nav-link" style="background: transparent !important; padding:0px">' . do_shortcode('[wd_asp id=1]') . '</li>';
 	//'<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-link" style="background: transparent !important;padding: 0px;">'.do_shortcode('[ivory-search id="4070" title="Default Search Form"]').'</li>';
-  }
-  add_filter('wp_nav_menu_items','general_search_menu_vlkx', 10, 2);
-
-function apply_desing_categories_post($desingPath, $the_query){
-				if ( $the_query->have_posts() ) {
-				while ( $the_query->have_posts() ) {
-					$the_query->the_post();
-					$nectar_post_format = (get_post_format() == 'image' || get_post_format() == 'aside') ? false : get_post_format();
-					get_template_part($desingPath, $nectar_post_format ); 
-				}
-			}else{ get_empty_search_result_valakax(); }
 }
+add_filter('wp_nav_menu_items', 'general_search_menu_vlkx', 10, 2);
 
-function get_filter_param(){
-	return $_GET["filter"] ? $_GET["filter"] : ''; 
-}
-
-function get_search_categoires_post(){
-	       			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-					// filtro ingresado desde el buscador
-					$valakax_filter = get_filter_param();
-					// obtengo los datos de la pagina para obtener el slug de la categoria
-					$page_object_category_info = get_queried_object();
-					// seteo el array con los datos para el buscador de la bbdd
-					$args = array(
-								's' => $valakax_filter,
-								'category_name' => $page_object_category_info->slug,
-						        'posts_per_page' => 5,
-                				'paged'=>$paged
-							);
-					// realizo la busqueda y la almaceno
-					$the_query = new WP_Query( $args );
-					return $the_query;
-}
-	function valakax_pagination($wp_custo_query) {
-
-		global $options;
-		//var_dump($wp_custo_query, $options['extra_pagination'] );
-		//extra pagination
-		if( !empty($options['extra_pagination']) && $options['extra_pagination'] == '1' ){
-
-
-			    $wp_custo_query->query_vars['paged'] > 1 ? $current = $wp_custo_query->query_vars['paged'] : $current = 1;
-			    $total_pages = $wp_custo_query->max_num_pages;
-
-			    if ($total_pages > 1){
-
-			      $permalink_structure = get_option('permalink_structure');
-				  $query_type = (count($_GET)) ? '&' : '?';
-			      $format = $query_type.'paged=%#%';
-				  echo '<div id="pagination" data-is-text="'.__("All items loaded", NECTAR_THEME_NAME).'">';
-
-			      echo paginate_links(array(
-			          'base' => get_pagenum_link(1) . '%_%',
-			          'format' => $format,
-			          'current' => $current,
-			          'total' => $total_pages,
-			          'prev_text'    => 'Anterior',
-    				  'next_text'    => 'Siguiente',
-			        ));
-
-				  echo  '</div>';
-
-			    }
-	}
-		//regular pagination
-		else{
-
-			if( get_next_posts_link() || get_previous_posts_link() ) {
-				echo '<div id="pagination" data-is-text="'.__("All items loaded", NECTAR_THEME_NAME).'">
-				      <div class="prev">'.get_previous_posts_link('&laquo; Previous').'</div>
-				      <div class="next">'.get_next_posts_link('NextPrevious &raquo;','').'</div>
-			          </div>';
-
-	        }
+function apply_desing_categories_post($desingPath, $the_query)
+{
+	if ($the_query->have_posts()) {
+		while ($the_query->have_posts()) {
+			$the_query->the_post();
+			$nectar_post_format = (get_post_format() == 'image' || get_post_format() == 'aside') ? false : get_post_format();
+			get_template_part($desingPath, $nectar_post_format);
 		}
-
-
+	} else {
+		get_empty_search_result_valakax();
 	}
+}
+
+function get_filter_param()
+{
+	return $_GET["filter"] ? $_GET["filter"] : '';
+}
+
+function get_search_categoires_post()
+{
+	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+	// filtro ingresado desde el buscador
+	$valakax_filter = get_filter_param();
+	// obtengo los datos de la pagina para obtener el slug de la categoria
+	$page_object_category_info = get_queried_object();
+	// seteo el array con los datos para el buscador de la bbdd
+	$args = array(
+		's' => $valakax_filter,
+		'category_name' => $page_object_category_info->slug,
+		'posts_per_page' => 5,
+		'paged' => $paged
+	);
+	// realizo la busqueda y la almaceno
+	$the_query = new WP_Query($args);
+	return $the_query;
+}
+function valakax_pagination($wp_custo_query)
+{
+
+	global $options;
+	//var_dump($wp_custo_query, $options['extra_pagination'] );
+	//extra pagination
+	if (!empty($options['extra_pagination']) && $options['extra_pagination'] == '1') {
 
 
-	function valakax_pagination_for_search($wp_custo_query) {
+		$wp_custo_query->query_vars['paged'] > 1 ? $current = $wp_custo_query->query_vars['paged'] : $current = 1;
+		$total_pages = $wp_custo_query->max_num_pages;
 
-		global $options;
-		if( !empty($options['extra_pagination']) && $options['extra_pagination'] == '1' ){
+		if ($total_pages > 1) {
 
-			    $wp_custo_query->query_vars['paged'] > 1 ? $current = $wp_custo_query->query_vars['paged'] : $current = 1;
-			    $total_pages = $wp_custo_query->max_num_pages;
+			$permalink_structure = get_option('permalink_structure');
+			$query_type = (count($_GET)) ? '&' : '?';
+			$format = $query_type . 'paged=%#%';
+			echo '<div id="pagination" data-is-text="' . __("All items loaded", NECTAR_THEME_NAME) . '">';
 
-			    if ($total_pages > 1){
+			echo paginate_links(array(
+				'base' => get_pagenum_link(1) . '%_%',
+				'format' => $format,
+				'current' => $current,
+				'total' => $total_pages,
+				'prev_text'    => 'Anterior',
+				'next_text'    => 'Siguiente',
+			));
 
-			      $permalink_structure = get_option('permalink_structure');
-				  $query_type = (count($_GET));
-			      $format = $query_type;
-				  echo '<div id="pagination" data-is-text="'.__("All items loaded", NECTAR_THEME_NAME).'">';
-			      echo paginate_links(array(
-			          'base' => home_url().'/page/'.'%#%'.'/',
-			          'format' => $format,
-			          'current' => $current,
-			          'total' => $total_pages,
-			          'prev_text'    => 'Anterior',
-    				  'next_text'    => 'Siguiente',
-			        ));
-
-				  echo  '</div>';
-
-			    }
-	}
-		//regular pagination
-		else{
-
-			if( get_next_posts_link() || get_previous_posts_link() ) {
-				echo '<div id="pagination" data-is-text="'.__("All items loaded", NECTAR_THEME_NAME).'">
-				      <div class="prev">'.get_previous_posts_link('&laquo; Previous').'</div>
-				      <div class="next">'.get_next_posts_link('NextPrevious &raquo;','').'</div>
-			          </div>';
-
-	        }
+			echo  '</div>';
 		}
-
-
 	}
+	//regular pagination
+	else {
+
+		if (get_next_posts_link() || get_previous_posts_link()) {
+			echo '<div id="pagination" data-is-text="' . __("All items loaded", NECTAR_THEME_NAME) . '">
+				      <div class="prev">' . get_previous_posts_link('&laquo; Previous') . '</div>
+				      <div class="next">' . get_next_posts_link('NextPrevious &raquo;', '') . '</div>
+			          </div>';
+		}
+	}
+}
+
+
+function valakax_pagination_for_search($wp_custo_query)
+{
+
+	global $options;
+	if (!empty($options['extra_pagination']) && $options['extra_pagination'] == '1') {
+
+		$wp_custo_query->query_vars['paged'] > 1 ? $current = $wp_custo_query->query_vars['paged'] : $current = 1;
+		$total_pages = $wp_custo_query->max_num_pages;
+
+		if ($total_pages > 1) {
+
+			$permalink_structure = get_option('permalink_structure');
+			$query_type = (count($_GET));
+			$format = $query_type;
+			echo '<div id="pagination" data-is-text="' . __("All items loaded", NECTAR_THEME_NAME) . '">';
+			echo paginate_links(array(
+				'base' => home_url() . '/page/' . '%#%' . '/',
+				'format' => $format,
+				'current' => $current,
+				'total' => $total_pages,
+				'prev_text'    => 'Anterior',
+				'next_text'    => 'Siguiente',
+			));
+
+			echo  '</div>';
+		}
+	}
+	//regular pagination
+	else {
+
+		if (get_next_posts_link() || get_previous_posts_link()) {
+			echo '<div id="pagination" data-is-text="' . __("All items loaded", NECTAR_THEME_NAME) . '">
+				      <div class="prev">' . get_previous_posts_link('&laquo; Previous') . '</div>
+				      <div class="next">' . get_next_posts_link('NextPrevious &raquo;', '') . '</div>
+			          </div>';
+		}
+	}
+}
 
 /*filtrado de pagina page, DEPRECADO SIN USO*/
 //function get_form_page(){
@@ -823,32 +836,36 @@ function get_search_categoires_post(){
 //	
 //}
 
-function get_category_slug(){
+function get_category_slug()
+{
 	$term = get_queried_object();
-    return $term->slug;
+	return $term->slug;
 }
 
 
 /* breadcrumbs */
 
-function crear_breadcrumbs() {
-    if (!is_front_page()) {
+function crear_breadcrumbs()
+{
+	if (!is_front_page()) {
 		echo '<div class="pypse_breadcrumb bg-teal "><div class="margin_pypse">';
-        echo '<a href="/">Inicio</a> › ';
-        if (is_category() || is_single() || is_page()) {
-            if(is_category()){
-                $category = get_the_category();
-                echo $category[0]->cat_name;
-            }else{
-                the_category(' - ');
-            }if(is_page()) {
-                echo the_title();
-            }if (is_single()) {
-                echo " › ";
-                the_title();
-            }
-        }
+		echo '<a href="/">Inicio</a> › ';
+		if (is_category() || is_single() || is_page()) {
+			if (is_category()) {
+				$category = get_the_category();
+				echo $category[0]->cat_name;
+			} else {
+				the_category(' - ');
+			}
+			if (is_page()) {
+				echo the_title();
+			}
+			if (is_single()) {
+				echo " › ";
+				the_title();
+			}
+		}
 		echo '</div></div>';
-    }
+	}
 }
-add_action( 'get_breadcrumbs_vlkx', 'crear_breadcrumbs' );
+add_action('get_breadcrumbs_vlkx', 'crear_breadcrumbs');
