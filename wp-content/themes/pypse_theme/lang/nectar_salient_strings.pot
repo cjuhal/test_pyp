@@ -13430,11 +13430,11 @@ msgid "Add Client"
 msgstr ""
 
 #: search.php:43
-msgid "Results For"
+msgid "Resultados para"
 msgstr ""
 
 #: search.php:121
-msgid "No results found"
+msgid "Sin resultados"
 msgstr ""
 
 #: searchform.php:2

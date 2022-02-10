@@ -618,15 +618,18 @@ if (!function_exists('valakax_custom_nav_menu')) {
 					array_push($item_class, "dropdown");
 				}
 
-				$output .= "<li class='" .  implode(" ", $item_class) . "'>";
+				$output .= "<li style='display:flex;flex-wrap: wrap;' class='" .  implode(" ", $item_class) . "'>";
 
-				if ($item->url) {
+				if ($item->url !== '#' && $args->show_carets && $args->walker->has_children) {
+					$output .= '<a href="' . $item->url . '" style="padding: 0px 0px 0px 1em;">';
+					$output .= $item->title;
+					$output .= '</a>';
+					$output .= '<a href="#" style="padding: 0px 1em 0px 5px;" class="' . $link_dropdown . " dropdown-toggle-split".'"' . $attr_parent_child .' id="navbarDropdown' . self::$index . '">';
+					$output .= '<span class="sr-only">Toggle Dropdown</span>';
+					$output .= '</a>';
+				}else{
 					$output .= '<a href="' . $item->url . '" class="' . $link_dropdown . '"' . $attr_parent_child . ' id="navbarDropdown' . self::$index . '">';
-				}
-
-				$output .= $item->title;
-
-				if ($item->url) {
+					$output .= $item->title;
 					$output .= '</a>';
 				}
 			}
@@ -699,7 +702,7 @@ function get_empty_search_result_valakax()
 /* buscador general insertado en top menu */
 function general_search_menu_vlkx($items, $args)
 {
-	return $items . '<li class="menu-item menu-item-object-category menu-item-type-taxonomy nav-item nav-link" style="background: transparent !important; padding:0px">' . do_shortcode('[wd_asp id=1]') . '</li>';
+	return $items . '<li class="menu-item menu-item-object-category menu-item-type-taxonomy nav-item nav-link" style="background: transparent !important; padding:0px 5px">' . do_shortcode('[wd_asp id=1]') . '</li>';
 	//'<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-link" style="background: transparent !important;padding: 0px;">'.do_shortcode('[ivory-search id="4070" title="Default Search Form"]').'</li>';
 }
 add_filter('wp_nav_menu_items', 'general_search_menu_vlkx', 10, 2);
@@ -823,18 +826,6 @@ function valakax_pagination_for_search($wp_custo_query)
 	}
 }
 
-/*filtrado de pagina page, DEPRECADO SIN USO*/
-//function get_form_page(){
-//	$url = get_permalink();
-//	$hasPage = strpos($link, '/page/' );
-//	if($hasPage !== false ){
-//		$auxlinkCode =  explode('/page/', $link);
-//		return str_replace("/page/", "",$auxlinkCode[0]);
-//	} else {
-//		return $url;
-//	}
-//	
-//}
 
 function get_category_slug()
 {

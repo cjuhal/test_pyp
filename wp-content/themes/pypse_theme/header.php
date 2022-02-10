@@ -63,7 +63,7 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
 
 ?>
 
-<body class="admin-bar ascend bg-teal container customize-support home logged-in nectar-auto-lightbox page">
+<body class="admin-bar ascend bg-teal container customize-support home logged-in nectar-auto-lightbox page" data-ajax-transitions="<?php echo (!empty($options['ajax-page-loading']) && $options['ajax-page-loading'] == '1') ? 'true' : 'false'; ?>">
 <!-- Facebook Pixel Code -->
 <script>
   !function(f,b,e,v,n,t,s)
@@ -110,7 +110,7 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
 					<div class="collapse navbar-collapse" style="justify-content: flex-end">
 						<div class="navbar-nav lr-auto">
 							<a class="border nav-link button_contact" href="/contactanos">
-							<i class="fa fa-envelope" style="vertical-align: middle;position: static;"></i><span class="hidden_mobile">CONTACTANOS</span></a>
+							<i class="fa fa-envelope" style="vertical-align: middle;position: static;"></i></a>
 						</div>
 							<ul id="menu-top-flacso"class="navbar-nav mr-auto">
 								<li class="nav-item"><a class="nav-link" href="http://flacso.org.ar/institucional/" target="_blank"><span> FLACSO</span></a></li>
@@ -122,7 +122,7 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
 				<!-- FIN 2 MENU -->
 
 				<!-- MENU MOBILE -->
-				<nav class="navbar navbar-expand-lg navbar-light hidden_desktop">
+				<nav class="navbar navbar-expand-lg navbar-light hidden_desktop w-100">
 						<div class='collapse navbar-collapse justify-content-md-center' id='menu_mobile'>
 							<?php do_shortcode('[HTML_CUSTOM_MENU]');?>
 						</div>
@@ -131,7 +131,7 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
 			</div>
 					
 					<!-- MENU DESKTOP -->
-					<nav class="navbar navbar-expand-lg navbar-light hidden_mobile">
+					<nav class="navbar navbar-expand-md navbar-light hidden_mobile">
 						<div class='collapse navbar-collapse justify-content-md-center' id='menu_desktop'>
 							<?php do_shortcode('[HTML_CUSTOM_MENU]');?>
 						</div>
@@ -139,13 +139,6 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
 					<!-- FIN MENU DESKTOP -->
                 </div>
 									
-					<!-- MENU DESKTOP -->
-					<nav class="navbar navbar-expand-lg navbar-light hidden_notebook">
-						<div class='collapse navbar-collapse justify-content-md-center' id='menu_notebook'>
-							<?php do_shortcode('[HTML_CUSTOM_MENU]');?>
-						</div>
-  					</nav>
-					<!-- FIN MENU DESKTOP -->
             </div>
             <!--/row-->
 		</div><!--/container-->

@@ -46,6 +46,14 @@ div .n2-section-smartslider{
   margin: 0px 3rem;
 }
 
+#pagination {
+  display: inline-block;
+}
+
+input#filter {
+  background-color: white !important;
+}
+
 
 
 /* menu class */
@@ -78,7 +86,12 @@ html {
   color: #061235;
   display: block;
   text-decoration: none;
-  padding: .5em 1em;
+  padding: 0px 1em;
+  white-space: nowrap;
+}
+
+.sub-menu li{
+  padding: 0.5rem 1rem;
 }
 
 .dropdown-menu {
@@ -127,90 +140,6 @@ html {
   margin: 0px 1rem;
 }
 
-@media screen and (min-width: 990px) and (max-width: 1600px){
-  .hidden_desktop{
-    display: none !important;
-  }
-  .hidden_mobile {
-    display: none !important;
-  }
-
-  .hidden_notebook{
-    padding: 0px !important;
-  }
-}
-
-
-
-@media screen and (min-width: 1600px){
-.hidden_notebook{
-  display: none !important;
-}
-}
-
-@media screen and (min-width: 992px) {
-  .valakax_nav_menu{ width:100%}
-  .valakax_nav_menu ul:first-child {
-    display: flex;
-    flex-wrap:wrap;
-  }
-
-
-
-  .hidden_desktop{
-    display: none !important;
-  }
-
-
-  .main-content{
-    padding: 0 !important;
-    margin: 0 3rem !important;
-  }
-}
-
-@media screen and (max-width: 990px) {
-  .hidden_mobile {
-    display: none !important;
-  }
-  .hidden_notebook{
-    display: none !important;
-  }
-  .flex_vlkx {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.valakax_nav_menu li:not(:last-child) {
-  border-right: unset;
-  text-transform: uppercase;
-}
-.logo2{ padding-left:15px; width:380px}
-.header_ .container {
-  max-width: 100% !important;
-  width: 100%;
-  margin: 0;
-  padding: 0rem 1rem;
-}
-
-.main-content{
-  padding: 0 !important;
-  margin: 0 !important;
-  max-width: 100% !important;
-}
-
-.elementor-section.elementor-section-boxed > .elementor-container {
-  max-width: 100% !important;
-  margin: 0 !important;
-}
-
-.sub_menu_box{
-  position: static !important;
-  margin: 0 12px 15px !important;
-  width: calc(100% - 15px) !important;
-}
-
-}
 
 .sub_menu li a {
   display: block;
@@ -236,9 +165,7 @@ html {
   border-radius: unset !important;
   box-shadow: unset !important;
 }
-div.asp_w {
-  margin:0px 5px !important;
-}
+
 div.asl_w {
   width: 100%;
   height: auto;
@@ -397,14 +324,21 @@ FINAL DE VISUAL COMPOSER
 .white{
 	color: white!important;
 }
-@media (min-width: 690px){
+
+@media (min-width: 680px) and (max-width: 770px){
+	#sidebar{
+    display: none;
+}
+}
+
+@media (min-width: 770px){
 	.span5_9{
 	width: 49%;
 	    display: inline-block;
 }
 }
 
-@media (max-width: 690px){
+@media (max-width: 770px){
 	.span5_9{
 	width: 100%;
 	    display: inline-block;
@@ -689,6 +623,7 @@ hr{
 
 
 /*FORM*/
+
 .wpforms-field-select{
     padding-top: 17px;
 }
@@ -722,42 +657,10 @@ div#wpform-field-hp {
   justify-content: center;
 }
 
-@media screen and (min-width: 1001px) and ( max-width: 1110px) {
-
-    .footer-content > .col-sm-auto, .footer-content > .block_menu > .col-sm-auto {
-        padding: 15px 11px !important;
-    }
-    .main .header_{
-      max-width: 100%;
-      margin: 0px 0px;
-      padding: 0px 0px 25px 0px;
-      background-color: #fff !important;
-    }
-    .mt-submenu{
-        margin-top: 0px;
-        float:right;
-    }
-}
-@media screen and (max-width: 991px) and (min-width: 991px){
-  .flex_vlkx .navbar .navbar-expand .navbar-light .mt-submenu{
-    margin: 0px;
-  }
-}
 .pt-logo2{
   width: calc(100% - 245px);
 }
-@media screen and (max-width: 1191px) and (min-width: 990px){
-  #container_header {
-    padding-right: 0px;
-  }
-  .row{
-    flex-wrap: nowrap;
-  }
 
-  #container_header .navbar .navbar-expand .navbar-light .mt-submenu{
-    padding: 0px;
-  }
-}
 
 @media screen and (max-width: 690px){
     .pt-logo2{
@@ -767,8 +670,109 @@ div#wpform-field-hp {
 }
 
 
+@media screen and (min-width: 990px) and (max-width: 1600px){
+  .hidden_desktop{
+    display: none !important;
+  }
+  .hidden_mobile {
+    padding: 0px !important;
+  }
 
-@media screen and (max-width: 990px) {
+  .logo2 {
+    padding-left: 15px;
+    width: 40%;
+}
+
+
+  div.asp_w.ajaxsearchpro.asp_non_compact {
+    min-width: 100px !important;
+}
+#container_header {
+  padding-right: 0px;
+}
+.row{
+  flex-wrap: nowrap;
+}
+
+.mt-submenu{
+  padding: 0px;
+  margin-top: 0px;
+}
+}
+
+
+
+@media screen and (min-width: 1600px){
+/* .hidden_notebook{
+  display: none !important;
+} */
+}
+
+@media screen and (min-width: 990px) {
+  .valakax_nav_menu{ width:100%}
+  .valakax_nav_menu ul:first-child {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+  }
+
+  .hidden_desktop{
+    display: none !important;
+  }
+
+  .main-content{
+    padding: 0 !important;
+    margin: 0 3rem !important;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  
+  .hidden_mobile {
+    display: none !important;
+  }
+  .hidden_notebook{
+    display: none !important;
+  }
+  .flex_vlkx {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.valakax_nav_menu li:not(:last-child), .sub-menu li {
+  border-right: unset;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  display: flow-root;
+}
+
+.logo2{ padding-left:15px; width:380px}
+.header_ .container {
+  max-width: 100% !important;
+  width: 100%;
+  margin: 0;
+  padding: 0rem 1rem;
+}
+
+.main-content{
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+}
+
+.elementor-section.elementor-section-boxed > .elementor-container {
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+.sub_menu_box{
+  position: static !important;
+  margin: 0 0 0 15px !important;
+  width: calc(100% - 15px) !important;
+}
 
   .pt-logo2{
     margin-top:-15px;
@@ -926,7 +930,7 @@ li.menu-item.menu-item-type-post_type.menu-item-object-post.nav-item.nav-link.me
 }
 
 
-@media screen and (max-width: 990px) and (min-width: 690px) {
+@media screen and (max-width: 989px) and (min-width: 690px) {
 .row{
   flex-wrap: nowrap!important;
   align-content: center;
@@ -12065,7 +12069,7 @@ body[data-form-style="minimal"] .textareahiddendiv{ display:none;  white-space:p
 body[data-form-style="minimal"] .minimal-form-input label:before, body[data-form-style="minimal"] .minimal-form-input label:after{ content:'';  position:absolute;  bottom:0;  left:0;  width:100%;  display:block;  height:3px;}
 
 div.wpforms-container-full .wpforms-form input[type=date], div.wpforms-container-full .wpforms-form input[type=datetime], div.wpforms-container-full .wpforms-form input[type=datetime-local], div.wpforms-container-full .wpforms-form input[type=email], div.wpforms-container-full .wpforms-form input[type=month], div.wpforms-container-full .wpforms-form input[type=number], div.wpforms-container-full .wpforms-form input[type=password], div.wpforms-container-full .wpforms-form input[type=range], div.wpforms-container-full .wpforms-form input[type=search], div.wpforms-container-full .wpforms-form input[type=tel], div.wpforms-container-full .wpforms-form input[type=text], div.wpforms-container-full .wpforms-form input[type=time], div.wpforms-container-full .wpforms-form input[type=url], div.wpforms-container-full .wpforms-form input[type=week], div.wpforms-container-full .wpforms-form select, div.wpforms-container-full .wpforms-form textarea {
-    background-color: #fff;
+    background-color: #fff !important;
     box-sizing: border-box;
     border-radius: 2px;
     color: #333;
