@@ -4863,13 +4863,14 @@ if ( !function_exists( 'nectar_page_header' ) ) {
    			<?php } else { ?>
 
 				<?php do_action('get_breadcrumbs_vlkx'); ?>
+				<div class="main-content">
 	   			 <div class="row" data-alignment="<?php echo (!empty($text_align)) ? $text_align : 'left' ; ?>">
 			    	<div class="main-content">
 						<div class="col span_12">
 						<span class="h1 teal"><?php echo $heading; ?></a>
 						</div>
 					</div>
-
+					</div>
 				</div>
 
 

@@ -4,7 +4,6 @@
 <?php nectar_page_header(get_option('page_for_posts')); ?>
 
 
-
 <div class="container-wrap pt-0">
 		
 	<div class="container main-content">

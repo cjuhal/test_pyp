@@ -4,7 +4,6 @@ global $options;
 $theme_skin = ( !empty($options['theme-skin']) ) ? $options['theme-skin'] : 'original';
 
 ?>
-
 <div class="container-wrap">
 	<?php do_action('get_breadcrumbs_vlkx');?>
 	<div class="main-content">
@@ -34,7 +33,7 @@ $theme_skin = ( !empty($options['theme-skin']) ) ? $options['theme-skin'] : 'ori
 			</div><!--/ post-area-->
 			<?php valakax_pagination_for_search($wp_query); ?>
 			</div><!--/span_9-->
-			<div id="sidebar" data-nectar-ss="false" class="col span_3 col_last mt-5">
+			<div id="sidebar" data-nectar-ss="false" class="col span_3 col_last mt-5 hidden_mobile">
 				<?php get_sidebar(); ?>
 			</div><!--/span_3-->
 			
@@ -43,7 +42,6 @@ $theme_skin = ( !empty($options['theme-skin']) ) ? $options['theme-skin'] : 'ori
 	</div><!--/container-->
 
 </div><!--/container-wrap-->
-
-
+</div><!--/main-content-->
 <?php get_footer(); ?>
 

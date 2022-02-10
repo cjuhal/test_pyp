@@ -46,6 +46,14 @@ div .n2-section-smartslider{
   margin: 0px 3rem;
 }
 
+#pagination {
+  display: inline-block;
+}
+
+input#filter {
+  background-color: white !important;
+}
+
 
 
 /* menu class */
@@ -80,6 +88,10 @@ html {
   text-decoration: none;
   padding: 0px 1em;
   white-space: nowrap;
+}
+
+.sub-menu li{
+  padding: 0.5rem 1rem;
 }
 
 .dropdown-menu {
@@ -730,12 +742,13 @@ div#wpform-field-hp {
     flex-wrap: wrap;
     justify-content: center;
 }
-.valakax_nav_menu li:not(:last-child) {
+.valakax_nav_menu li:not(:last-child), .sub-menu li {
   border-right: unset;
   text-transform: uppercase;
   padding: 0.5rem 1rem;
   display: flow-root;
 }
+
 .logo2{ padding-left:15px; width:380px}
 .header_ .container {
   max-width: 100% !important;

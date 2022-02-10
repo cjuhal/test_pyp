@@ -65,8 +65,7 @@ endwhile; endif;
 
 <div class="container-wrap <?php echo ($fullscreen_header == true) ? 'fullscreen-blog-header': null; ?> <?php if($blog_type == 'std-blog-fullwidth' || $hide_sidebar == '1') echo 'no-sidebar'; ?>">
 <?php do_action('get_breadcrumbs_vlkx'); ?>
-
-		<div class="sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
+	<div class="sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
 
 	<div class="main-content">
 		
@@ -208,7 +207,7 @@ endwhile; endif;
 			
 			<?php if($blog_type != 'std-blog-fullwidth' && $hide_sidebar != '1') { ?>
 				
-				<div id="sidebar" data-nectar-ss="<?php echo $enable_ss; ?>" class="col span_3 col_last">
+				<div id="sidebar" data-nectar-ss="<?php echo $enable_ss; ?>" class="col span_3 col_last hidden_mobile">
 					<?php get_sidebar(); ?>
 				</div><!--/sidebar-->
 				
