@@ -1,9 +1,12 @@
 <?php get_header(); ?>
 <?php do_action('get_breadcrumbs_vlkx'); ?>
 
+
+
+
+< class="main-content">
+
 <?php nectar_page_header(get_option('page_for_posts')); ?>
-
-
 
 <div class="container-wrap pt-0">
 		
@@ -32,5 +35,6 @@
 	</div><!--/container-->
 
 </div><!--/container-wrap-->
+</div><!--/main-content-->
 	
 <?php get_footer(); ?>
