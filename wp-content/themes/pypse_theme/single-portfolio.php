@@ -49,7 +49,7 @@ $project_social_style = (!empty($options['portfolio_social_style'])) ? $options[
 		
 	<div class="container-wrap" data-nav-pos="<?php echo $single_nav_pos; ?>">
 			<div class="container sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
-		<div class="container main-content"> 
+		<div class="main-content"> 
 			
 			<?php 
 
