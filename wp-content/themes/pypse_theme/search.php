@@ -11,8 +11,8 @@ $theme_skin = ( !empty($options['theme-skin']) ) ? $options['theme-skin'] : 'ori
 		<div class="row">
 			<div class="col span_12">
 				<div class="col span_12 section-title">
-					<h1><?php echo __('Results For', NECTAR_THEME_NAME); ?><span>"<?php echo esc_html( get_search_query( false ) ); ?>"</span></h1>
-					<?php if($theme_skin == 'material' && $wp_query->found_posts) echo '<span class="result-num">' . $wp_query->found_posts . ' results found </span>'; ?>
+					<h1><?php echo __('Resultados para', NECTAR_THEME_NAME); ?><span>"<?php echo esc_html( get_search_query( false ) ); ?>"</span></h1>
+					<?php if($theme_skin == 'material' && $wp_query->found_posts) echo '<span class="result-num">' . $wp_query->found_posts . ' resultados encontrados </span>'; ?>
 				</div>
 			</div>
 		</div>

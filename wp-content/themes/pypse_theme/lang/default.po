@@ -725,7 +725,7 @@ msgstr ""
 
 # @ js_composer
 #: ../search.php:38
-msgid "Results For"
+msgid "Resultados para"
 msgstr ""
 
 # @ js_composer
@@ -749,7 +749,7 @@ msgstr ""
 
 # @ js_composer
 #: ../search.php:116
-msgid "No results found"
+msgid "Sin resultados"
 msgstr ""
 
 #: ../searchform.php:2
