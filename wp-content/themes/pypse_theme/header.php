@@ -63,7 +63,7 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
 
 ?>
 
-<body class="admin-bar ascend bg-teal container customize-support home logged-in nectar-auto-lightbox page">
+<body class="admin-bar ascend bg-teal container customize-support home logged-in nectar-auto-lightbox page" data-ajax-transitions="<?php echo (!empty($options['ajax-page-loading']) && $options['ajax-page-loading'] == '1') ? 'true' : 'false'; ?>">
 <!-- Facebook Pixel Code -->
 <script>
   !function(f,b,e,v,n,t,s)
