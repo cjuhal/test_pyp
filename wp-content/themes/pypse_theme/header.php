@@ -88,7 +88,7 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
 <!-- HEADER -->
 <div id="header-outer" >
 	<header class="header_">
-		<div class="container">
+		<div class="container" id="container_header">
 
 
 
@@ -122,7 +122,7 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
 				<!-- FIN 2 MENU -->
 
 				<!-- MENU MOBILE -->
-				<nav class="navbar navbar-expand-lg navbar-light hidden_desktop w-100">
+				<nav class="navbar navbar-expand-lg navbar-light hidden_desktop">
 						<div class='collapse navbar-collapse justify-content-md-center' id='menu_mobile'>
 							<?php do_shortcode('[HTML_CUSTOM_MENU]');?>
 						</div>
@@ -132,12 +132,20 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
 					
 					<!-- MENU DESKTOP -->
 					<nav class="navbar navbar-expand-lg navbar-light hidden_mobile">
-						<div class='collapse navbar-collapse justify-content-md-center' id='menu_mobile'>
+						<div class='collapse navbar-collapse justify-content-md-center' id='menu_desktop'>
 							<?php do_shortcode('[HTML_CUSTOM_MENU]');?>
 						</div>
   					</nav>
 					<!-- FIN MENU DESKTOP -->
                 </div>
+									
+					<!-- MENU DESKTOP -->
+					<nav class="navbar navbar-expand-lg navbar-light hidden_notebook">
+						<div class='collapse navbar-collapse justify-content-md-center' id='menu_notebook'>
+							<?php do_shortcode('[HTML_CUSTOM_MENU]');?>
+						</div>
+  					</nav>
+					<!-- FIN MENU DESKTOP -->
             </div>
             <!--/row-->
 		</div><!--/container-->

@@ -4864,7 +4864,7 @@ if ( !function_exists( 'nectar_page_header' ) ) {
 
 				<?php do_action('get_breadcrumbs_vlkx'); ?>
 	   			 <div class="row" data-alignment="<?php echo (!empty($text_align)) ? $text_align : 'left' ; ?>">
-			    	<div class="container main-content">
+			    	<div class="main-content">
 						<div class="col span_12">
 						<span class="h1 teal"><?php echo $heading; ?></a>
 						</div>
@@ -5112,7 +5112,7 @@ remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wra
 
 
 function nectar_shop_wrapper_start() {
-   echo '<div class="container-wrap"><div class="container main-content"><div class="row"><div class="nectar-shop-header">';
+   echo '<div class="container-wrap"><div class="main-content"><div class="row"><div class="nectar-shop-header">';
    do_action( 'nectar_shop_header_markup' );
    echo '</div>';
 }
@@ -5124,7 +5124,7 @@ function nectar_shop_wrapper_end() {
 
 function nectar_shop_wrapper_start_sidebar_left() {
 
-    echo '<div class="container-wrap"><div class="container main-content"><div class="nectar-shop-header">';
+    echo '<div class="container-wrap"><div class="main-content"><div class="nectar-shop-header">';
     do_action( 'nectar_shop_header_markup' );
     echo '</div><div class="row"><div id="sidebar" class="col span_3 col">';
     if ( function_exists('dynamic_sidebar')) {
@@ -5139,7 +5139,7 @@ function nectar_shop_wrapper_end_sidebar_left() {
 
 
 function nectar_shop_wrapper_start_sidebar_right() {
-    echo '<div class="container-wrap"><div class="container main-content"><div class="nectar-shop-header">';
+    echo '<div class="container-wrap"><div class="main-content"><div class="nectar-shop-header">';
     do_action( 'nectar_shop_header_markup' );
     echo '</div><div class="row"><div class="post-area col span_9">';
 }
@@ -5154,7 +5154,7 @@ function nectar_shop_wrapper_end_sidebar_right() {
 
 function nectar_shop_wrapper_start_fullwidth() {
 
-    echo '<div class="container-wrap"><div class="container main-content"><div class="row"><div class="full-width-content"><div class="nectar-shop-header">';
+    echo '<div class="container-wrap"><div class="main-content"><div class="row"><div class="full-width-content"><div class="nectar-shop-header">';
     do_action( 'nectar_shop_header_markup' );
     echo '</div>';
 }
@@ -5322,7 +5322,7 @@ add_action('woocommerce_before_main_content', 'salient_theme_wrapper_start', 10)
 add_action('woocommerce_after_main_content', 'salient_theme_wrapper_end', 10);
 
 function salient_theme_wrapper_start() {
-    echo '<div class="container main-content">';
+    echo '<div class="main-content">';
 }
 
 function salient_theme_wrapper_end() {

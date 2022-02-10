@@ -160,21 +160,15 @@ $footerColumns = (!empty($options['footer_columns'])) ? $options['footer_columns
 			<div class="bg-white text-center text-md-left" style="height:35px;">
 
 				<div class="row" id="copyright">
-					<div class="col-lg-4 col-sm-4" style="padding-left: 15px;">
 
-						</div><!--/span_7-->
-
+				<div class="w-100 copyr_footer">
 				<?php if($footerColumns != '0'){ ?>
-					<div class="col-lg-4 col-sm-4 text-center">
-
 						<?php if(!empty($options['disable-auto-copyright']) && $options['disable-auto-copyright'] == 1) { ?>
 							<p><?php if(!empty($options['footer-copyright-text'])) echo $options['footer-copyright-text']; ?> </p>
 						<?php } else { ?>
 							<p>Copyright &copy; <?php echo date('Y') ?> <a href="https://www.instagram.com/valakax/" target="_blank"><?php if(!empty($options['footer-copyright-text'])) echo $options['footer-copyright-text']; ?> VALAKAX</a></p>
 						<?php } ?>
-
 					</div>
-					<div class="col-lg-4 col-sm-4"></div><!--/span_5-->
 				<?php } ?>
 
 

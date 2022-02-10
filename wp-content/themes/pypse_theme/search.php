@@ -7,7 +7,7 @@ $theme_skin = ( !empty($options['theme-skin']) ) ? $options['theme-skin'] : 'ori
 
 <div class="container-wrap">
 	<?php do_action('get_breadcrumbs_vlkx');?>
-	<div class="container main-content">
+	<div class="main-content">
 		
 		<div class="row">
 			<div class="col span_12">

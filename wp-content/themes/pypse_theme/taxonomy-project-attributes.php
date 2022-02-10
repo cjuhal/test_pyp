@@ -86,7 +86,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 
 
 <div class="container-wrap">
-		<div class="container sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
+		<div class="sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
 	
 	<div class="main-content" data-col-num="cols-<?php echo $cols; ?>">
 

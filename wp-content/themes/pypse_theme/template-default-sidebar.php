@@ -21,9 +21,9 @@ do_action('get_breadcrumbs_vlkx');
     <div class="container-wrap" style="min-height: 300px;">
 
 
-			<div class="container sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
+			<div class="sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
 
-        <div class="<?php if($page_full_screen_rows != 'on') echo 'container'; ?> main-content">
+        <div class="main-content">
 
             <div class="row">
 

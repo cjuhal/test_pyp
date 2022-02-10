@@ -23,7 +23,7 @@ if($has_main_menu == 'true' && $mobile_fixed == '1' || $has_main_menu == 'true' 
     ?>
     
     
-    <div class="<?php if($page_full_screen_rows != 'on') echo 'container'; ?> main-content">
+    <div class="main-content">
 
         <div class="row">
 
