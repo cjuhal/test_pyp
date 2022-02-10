@@ -66,9 +66,9 @@ endwhile; endif;
 <div class="container-wrap <?php echo ($fullscreen_header == true) ? 'fullscreen-blog-header': null; ?> <?php if($blog_type == 'std-blog-fullwidth' || $hide_sidebar == '1') echo 'no-sidebar'; ?>">
 <?php do_action('get_breadcrumbs_vlkx'); ?>
 
-		<div class="container sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
+		<div class="sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
 
-	<div class="container main-content">
+	<div class="main-content">
 		
 		<?php if(get_post_format() != 'quote' && get_post_format() != 'status' && get_post_format() != 'aside') { ?>
 			

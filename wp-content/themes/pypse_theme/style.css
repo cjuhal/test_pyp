@@ -127,17 +127,40 @@ html {
   margin: 0px 1rem;
 }
 
+@media screen and (min-width: 990px) and (max-width: 1600px){
+  .hidden_desktop{
+    display: none !important;
+  }
+  .hidden_mobile {
+    display: none !important;
+  }
+
+  .hidden_notebook{
+    padding: 0px !important;
+  }
+}
 
 
-@media screen and (min-width: 993px) {
+
+@media screen and (min-width: 1600px){
+.hidden_notebook{
+  display: none !important;
+}
+}
+
+@media screen and (min-width: 992px) {
   .valakax_nav_menu{ width:100%}
   .valakax_nav_menu ul:first-child {
     display: flex;
     flex-wrap:wrap;
   }
-  .hidden_desktop {
+
+
+
+  .hidden_desktop{
     display: none !important;
   }
+
 
   .main-content{
     padding: 0 !important;
@@ -145,9 +168,12 @@ html {
   }
 }
 
-@media screen and (max-width: 993px) {
+@media screen and (max-width: 990px) {
   .hidden_mobile {
-    display: none;
+    display: none !important;
+  }
+  .hidden_notebook{
+    display: none !important;
   }
   .flex_vlkx {
     display: flex;
@@ -164,7 +190,7 @@ html {
   max-width: 100% !important;
   width: 100%;
   margin: 0;
-  padding: 0px;
+  padding: 0rem 1rem;
 }
 
 .main-content{
@@ -332,6 +358,10 @@ html {
 }
 .sharedButtonsRight > div > ul{
 	float: right !important;
+}
+
+.sharedButtonsRight{
+  margin: 0 6rem;
 }
 
 
@@ -681,6 +711,17 @@ div#wpform-field-hp {
     margin-top: -45px;
     float:right;
 }
+
+.copyr_footer{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  min-width: 100%;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
 @media screen and (min-width: 1001px) and ( max-width: 1110px) {
 
     .footer-content > .col-sm-auto, .footer-content > .block_menu > .col-sm-auto {
@@ -689,13 +730,33 @@ div#wpform-field-hp {
     .main .header_{
       max-width: 100%;
       margin: 0px 0px;
-      padding: 68px 0px 25px 0px;
+      padding: 0px 0px 25px 0px;
       background-color: #fff !important;
     }
     .mt-submenu{
         margin-top: 0px;
         float:right;
     }
+}
+@media screen and (max-width: 991px) and (min-width: 991px){
+  .flex_vlkx .navbar .navbar-expand .navbar-light .mt-submenu{
+    margin: 0px;
+  }
+}
+.pt-logo2{
+  width: calc(100% - 245px);
+}
+@media screen and (max-width: 1191px) and (min-width: 990px){
+  #container_header {
+    padding-right: 0px;
+  }
+  .row{
+    flex-wrap: nowrap;
+  }
+
+  #container_header .navbar .navbar-expand .navbar-light .mt-submenu{
+    padding: 0px;
+  }
 }
 
 @media screen and (max-width: 690px){
@@ -705,7 +766,15 @@ div#wpform-field-hp {
     }
 }
 
-@media screen and (max-width: 991px) {
+
+
+@media screen and (max-width: 990px) {
+
+  .pt-logo2{
+    margin-top:-15px;
+    height: 150px;
+}
+
   .config_menu > div > ul > li > .sub-menu{
     background: #73C69C !important;
     position: initial;
@@ -824,8 +893,9 @@ li.menu-item.menu-item-type-post_type.menu-item-object-post.nav-item.nav-link.me
         border-right: none !important;
         border-bottom: none !important;
     }
-	.container .main-content{
-		    padding: 0px 30px;
+	.container .main-content, .sharedButtonsRight{
+		    padding: 0px 30px !important;
+        margin: 0px;
 	}
 
     .main .header_{
@@ -856,10 +926,20 @@ li.menu-item.menu-item-type-post_type.menu-item-object-post.nav-item.nav-link.me
 }
 
 
+@media screen and (max-width: 990px) and (min-width: 690px) {
+.row{
+  flex-wrap: nowrap!important;
+  align-content: center;
+  justify-content: center;
+}
+}
+
 @media screen and (max-width: 690px) {
 	.row{
 		padding: 0 !important;
     margin: 0 !important;
+    align-content: center;
+    justify-content: center;
 	}
         .block_menu > .section{
         padding: 15px 30px;
@@ -870,9 +950,7 @@ li.menu-item.menu-item-type-post_type.menu-item-object-post.nav-item.nav-link.me
     .footer-content{
         display: block !important;
     }
-    .row{
-        display: block !important;
-    }
+
     .logosection{
         padding: 15px 30px;
         border-right: none;
@@ -978,6 +1056,12 @@ html {
 }
 
 /* fin buscador */
+
+.elementor-grid .elementor-grid-item {
+  word-break: break-word;
+  min-width: 0;
+  padding: 5px;
+}
 
 
 /*

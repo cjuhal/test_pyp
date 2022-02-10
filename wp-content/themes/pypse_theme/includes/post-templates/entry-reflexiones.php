@@ -103,7 +103,7 @@ $use_excerpt = (!empty($options['blog_auto_excerpt']) && $options['blog_auto_exc
 							 
 							</div><!--/post-header-->
 					</div><!--article-content-wrap-->
-								<div class="container sharedButtonsRight mt-2"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
+								<div class="sharedButtonsRight mt-2"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
 
 				<?php } ?>
 						 <!--/VALAKAX EDITION -->

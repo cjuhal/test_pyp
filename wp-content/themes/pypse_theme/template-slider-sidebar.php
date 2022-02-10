@@ -195,7 +195,7 @@ do_action('get_breadcrumbs_vlkx');
 
 <?php if($headerFormat == 'left-header') echo '</div>'; ?>
 
-	<div class="container sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
+	<div class="sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
 
 <div class="main-content">
 

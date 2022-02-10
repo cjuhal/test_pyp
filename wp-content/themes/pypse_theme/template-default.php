@@ -21,8 +21,8 @@ if($has_main_menu == 'true' && $mobile_fixed == '1' || $has_main_menu == 'true' 
 
     <?php do_action('get_breadcrumbs_vlkx'); ?>
         
-	<div class="container sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
-        <div class="<?php if($page_full_screen_rows != 'on') echo 'container'; ?> main-content">
+	<div class="sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
+        <div class="main-content">
 
             <div class="row">
 

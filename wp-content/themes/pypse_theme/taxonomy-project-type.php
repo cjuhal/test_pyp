@@ -87,8 +87,8 @@ $lightbox_only = false;
 
 
 <div class="container-wrap">
-		<div class="container sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
-	<div class="container main-content" data-col-num="cols-<?php echo $cols; ?>">
+		<div class="sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
+	<div class="main-content" data-col-num="cols-<?php echo $cols; ?>">
 
 		<div class="portfolio-wrap <?php if($project_style == '1' && $span_num == 'elastic-portfolio-item') echo 'default-style';  if($project_style == '6' && $span_num == 'elastic-portfolio-item') echo 'spaced'; ?>">
 			
