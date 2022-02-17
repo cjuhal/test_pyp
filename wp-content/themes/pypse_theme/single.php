@@ -75,8 +75,8 @@ endwhile; endif;
 			
 			    if((empty($bg) && empty($bg_color)) && $fullscreen_header != true) { ?>
 
-					<div class="row heading-title" data-header-style="<?php echo $blog_header_type; ?>">
-						<div class="col span_12 section-title blog-title">
+					<div class="heading-title" data-header-style="<?php echo $blog_header_type; ?>">
+						<div class="col span_12 section-title blog-title margin_pypse">
 							<?php if($blog_header_type == 'default_minimal') { ?> 
 							<span class="meta-category">
 
