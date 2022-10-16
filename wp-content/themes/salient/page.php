@@ -14,11 +14,27 @@ $animate_in_effect = (!empty($options['header-animate-in-effect'])) ? $options['
 if($headerColorScheme == 'dark') { $userSetBG = '#1f1f1f'; }
 $userSetSideWidgetArea = $sideWidgetArea;
 if($has_main_menu == 'true' && $mobile_fixed == '1' || $has_main_menu == 'true' && $theme_skin == 'material') $sideWidgetArea = '1';
-do_action('get_breadcrumbs_vlkx');
+
 ?>
 
 <div class="container-wrap" style="min-height: 300px;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-teal config_menu">
 
+    <div class="collapse show navbar-collapse justify-content-md-center" id="navbarsExample08" >
+
+        <?php if($theme_skin != 'material') { ?>
+            <ul class="navbar-nav">
+                <?php
+                if($has_main_menu == 'true') {
+                    wp_nav_menu( array('walker' => new Nectar_Arrow_Walker_Nav_Menu, 'theme_location' => 'top_nav', 'container' => '', 'items_wrap' => '%3$s' ) );
+                } else {
+                    echo '<li class="no-menu-assigned"><a href="#">No menu assigned</a></li>';
+                }
+                ?>
+            </ul>
+        <?php } //non material skin ?>
+    </div>
+    </nav>
 	<div class="container sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
 	
 	<div class="<?php if($page_full_screen_rows != 'on') echo 'container'; ?> main-content">
@@ -27,6 +43,8 @@ do_action('get_breadcrumbs_vlkx');
 			
 			<?php 
 
+			//breadcrumbs
+			if ( function_exists( 'yoast_breadcrumb' ) && !is_home() && !is_front_page() ){ yoast_breadcrumb('<p id="breadcrumbs">','</p>'); } 
 
 			 //buddypress
 			 global $bp; 

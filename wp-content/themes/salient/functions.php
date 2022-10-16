@@ -4862,7 +4862,25 @@ if ( !function_exists( 'nectar_page_header' ) ) {
    			</div>
    			<?php } else { ?>
 
-				<?php do_action('get_breadcrumbs_vlkx'); ?>
+				<?php $has_main_menu = (has_nav_menu('top_nav')) ? 'true' : 'false';?>
+				<nav class="navbar navbar-expand-lg navbar-dark bg-teal config_menu">
+
+				<div class="collapse show navbar-collapse justify-content-md-center" id="navbarsExample08" >
+
+						<?php if($theme_skin != 'material') { ?>
+								<ul class="navbar-nav">
+										<?php
+										if($has_main_menu == 'true') {
+												wp_nav_menu( array('walker' => new Nectar_Arrow_Walker_Nav_Menu, 'theme_location' => 'top_nav', 'container' => '', 'items_wrap' => '%3$s' ) );
+										} else {
+												echo '<li class="no-menu-assigned"><a href="#">No menu assigned</a></li>';
+										}
+										?>
+								</ul>
+						<?php } //non material skin ?>
+				</div>
+				</nav>
+
 	   			 <div class="row" data-alignment="<?php echo (!empty($text_align)) ? $text_align : 'left' ; ?>">
 			    	<div class="container main-content">
 						<div class="col span_12">

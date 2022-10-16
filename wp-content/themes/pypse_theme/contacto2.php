@@ -29,9 +29,6 @@ if($has_main_menu == 'true' && $mobile_fixed == '1' || $has_main_menu == 'true' 
 
             <?php
 
-            //breadcrumbs
-            if ( function_exists( 'yoast_breadcrumb' ) && !is_home() && !is_front_page() ){ yoast_breadcrumb('<p id="breadcrumbs">','</p>'); }
-
             //buddypress
             global $bp;
             if($bp && !bp_is_blog_page()) echo '<h1>' . get_the_title() . '</h1>';

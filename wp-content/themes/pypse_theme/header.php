@@ -109,7 +109,7 @@ if($theme_skin == 'material' && $headerFormat != 'left-header') {
   					</button>
 					<div class="collapse navbar-collapse" style="justify-content: flex-end">
 						<div class="navbar-nav lr-auto">
-							<a class="border nav-link button_contact" href="/contactanos">
+							<a class="border nav-link button_contact" style="padding: 7px !important; margin: 5px;" href="/contactanos">
 							<i class="fa fa-envelope" style="vertical-align: middle;position: static;"></i></a>
 						</div>
 							<ul id="menu-top-flacso"class="navbar-nav mr-auto">

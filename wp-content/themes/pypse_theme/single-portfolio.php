@@ -57,10 +57,7 @@ $project_social_style = (!empty($options['portfolio_social_style'])) ? $options[
 			
 			<div class="row <?php if(!empty($enable_gallery_slider) && $enable_gallery_slider == 'on') echo 'gallery-slider'; ?>">
 				
-				<?php if(have_posts()) : while(have_posts()) : the_post(); 
-				
-					if ( function_exists( 'yoast_breadcrumb' ) ){ yoast_breadcrumb('<p id="breadcrumbs">','</p>'); } 
-				?>
+				<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
 					
 					<div class="post-area col <?php if($fwp != 'enabled') { echo 'span_9'; } else { echo 'span_12'; } ?>">
 						

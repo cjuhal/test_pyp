@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php do_action('get_breadcrumbs_vlkx'); ?>
+
 
 <?php nectar_page_header(get_option('page_for_posts')); ?>
 

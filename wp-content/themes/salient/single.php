@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php do_action('get_breadcrumbs_vlkx'); ?>
+
 <?php 
 
 global $nectar_theme_skin, $options;
@@ -65,7 +65,24 @@ endwhile; endif;
 
 
 <div class="container-wrap <?php echo ($fullscreen_header == true) ? 'fullscreen-blog-header': null; ?> <?php if($blog_type == 'std-blog-fullwidth' || $hide_sidebar == '1') echo 'no-sidebar'; ?>">
+<?php $has_main_menu = (has_nav_menu('top_nav')) ? 'true' : 'false';?>
+<nav class="navbar navbar-expand-lg navbar-dark bg-teal config_menu">
 
+<div class="collapse show navbar-collapse justify-content-md-center" id="navbarsExample08" >
+
+		<?php if($theme_skin != 'material') { ?>
+				<ul class="navbar-nav">
+						<?php
+						if($has_main_menu == 'true') {
+								wp_nav_menu( array('walker' => new Nectar_Arrow_Walker_Nav_Menu, 'theme_location' => 'top_nav', 'container' => '', 'items_wrap' => '%3$s' ) );
+						} else {
+								echo '<li class="no-menu-assigned"><a href="#">No menu assigned</a></li>';
+						}
+						?>
+				</ul>
+		<?php } //non material skin ?>
+</div>
+</nav>
 		<div class="container sharedButtonsRight"><?php echo do_shortcode('[Sassy_Social_Share]') ?></div>
 
 	<div class="container main-content">

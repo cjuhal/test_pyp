@@ -91,7 +91,7 @@ endwhile; endif;
 									</span> 
 
 							</span> <?php } ?>
-							<h1 class="h1 teal"><?php the_title(); ?></h1>
+							
 						</div><!--/section-title-->
 					</div><!--/row-->
 				
@@ -102,10 +102,8 @@ endwhile; endif;
 		<?php } ?>
 			
 		<div class="row">
-			
 			<?php 
 
-			if ( function_exists( 'yoast_breadcrumb' ) ){ yoast_breadcrumb('<p id="breadcrumbs">','</p>'); } 
 
 			$options = get_nectar_theme_options(); 
 
@@ -122,9 +120,11 @@ endwhile; endif;
 
 			if($blog_type == 'std-blog-fullwidth' || $hide_sidebar == '1'){
 				echo '<div class="post-area col '.$std_minimal_class.' span_12 col_last">';
+			?> <h1 class="h1 teal m-3-lg"><?php the_title(); ?></h1> <?php
 			} else {
 				echo '<div class="post-area col '.$std_minimal_class.' span_9">';
-			}
+			} 
+			
 			
 				 if(have_posts()) : while(have_posts()) : the_post(); 
 					

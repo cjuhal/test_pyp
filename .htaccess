@@ -1,6 +1,6 @@
 # BEGIN iThemes Security - No modifiques ni borres esta línea
 # iThemes Security Config Details: 2
-	# Activar la característica de lista negra de HackRepair.com - Seguridad > Ajustes > Usuarios baneados > Lista negra por defecto
+	# Enable HackRepair.com's blocklist feature - Security > Settings > Banned Users > Default Blocklist
 	# Start HackRepair.com Blacklist
 	RewriteEngine on
 	# Start Abuse Agent Blocking
@@ -179,45 +179,34 @@
 	# End HackRepair.com Blacklist, http://pastebin.com/u/hackrepair
 
 	# Banear servidores - Seguridad > Ajustes > Usuarios baneados
-	SetEnvIF REMOTE_ADDR "^37\.115\.184\.19$" DenyAccess
-	SetEnvIF X-FORWARDED-FOR "^37\.115\.184\.19$" DenyAccess
-	SetEnvIF X-CLUSTER-CLIENT-IP "^37\.115\.184\.19$" DenyAccess
+	SetEnvIF REMOTE_ADDR "^195\.133\.201\.214$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^195\.133\.201\.214$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^195\.133\.201\.214$" DenyAccess
 
 	SetEnvIF REMOTE_ADDR "^206\.54\.165\.186$" DenyAccess
 	SetEnvIF X-FORWARDED-FOR "^206\.54\.165\.186$" DenyAccess
 	SetEnvIF X-CLUSTER-CLIENT-IP "^206\.54\.165\.186$" DenyAccess
 
-	SetEnvIF REMOTE_ADDR "^195\.133\.201\.214$" DenyAccess
-	SetEnvIF X-FORWARDED-FOR "^195\.133\.201\.214$" DenyAccess
-	SetEnvIF X-CLUSTER-CLIENT-IP "^195\.133\.201\.214$" DenyAccess
+	SetEnvIF REMOTE_ADDR "^37\.115\.184\.19$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^37\.115\.184\.19$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^37\.115\.184\.19$" DenyAccess
 
 	<IfModule mod_authz_core.c>
 		<RequireAll>
 			Require all granted
 			Require not env DenyAccess
-			Require not ip 37.115.184.19
-			Require not ip 206.54.165.186
 			Require not ip 195.133.201.214
+			Require not ip 206.54.165.186
+			Require not ip 37.115.184.19
 		</RequireAll>
 	</IfModule>
 	<IfModule !mod_authz_core.c>
 		Order allow,deny
 		Allow from all
 		Deny from env=DenyAccess
-		Deny from 37.115.184.19
-		Deny from 206.54.165.186
 		Deny from 195.133.201.214
-	</IfModule>
-
-	<IfModule mod_rewrite.c>
-		RewriteEngine On
-
-		# Reduce el spam en los comentarios - Seguridad > Ajustes > Mejoras de WordPress > Spam de comentarios
-		RewriteCond %{REQUEST_METHOD} POST
-		RewriteCond %{REQUEST_URI} /wp-comments-post\.php$
-		RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
-		RewriteCond %{HTTP_REFERER} !^https?://(([^/]+\.)?0\.1|jetpack\.wordpress\.com/jetpack-comment)(/|$) [NC]
-		RewriteRule ^.* - [F]
+		Deny from 206.54.165.186
+		Deny from 37.115.184.19
 	</IfModule>
 # END iThemes Security - No modifiques ni borres esta línea
 
